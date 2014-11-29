@@ -1,9 +1,10 @@
 <?php
 
 // toggle this to change the log config
-define('DEV', false);
+define('DEV', true);
 
 ini_set('display_errors', DEV ? 'On' : 'Off');
+ini_set('error_reporting', DEV ? 'E_ALL & ~E_WARNING' : 'E_ALL & ~E_WARNING & ~E_DEPRECATED & ~E_STRICT');
 ini_set('ignore_repeated_errors', 'On');
 ini_set("log_errors", 1);
 ini_set("error_log", "c:/ProgramFiles/nginx-1.7.7/logs/php-error.log");

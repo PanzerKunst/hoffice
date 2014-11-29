@@ -3,7 +3,7 @@
 1. Download the x86 distro of PHP for windows, from [windows.php.net](http://windows.php.net/download/)
 2. Extract it to `c:\ProgramFiles\php-5.6.3`
 3. Download and install the [VC redist for x86 platform](http://www.microsoft.com/en-us/download/details.aspx?id=30679)
-4. Run `C:\ProgramFiles\php-5.6.3>php-cgi.exe -b 127.0.0.1:9000 -c c:\programfiles\php-5-6-3\php.ini` and check that it works
+4. Run `C:\ProgramFiles\php-5.6.3>php-cgi.exe -b 127.0.0.1:9000` and check that it works
 
 
 # Nginx installation
@@ -38,11 +38,12 @@
     * Change the `fastcgi_param` directive inside the `location ~ \.php$` block to `SCRIPT_FILENAME  c:/Pro/hoffice/website/$fastcgi_script_name;`
 4. Restart Nginx: `nginx -s reload`
 5. Reload [http://localhost](http://localhost)
-6. Hide warnings from the web page: edit `html/index.php` and add the following lines at the top:
+6. Hide warnings from the web page: edit `website/index.php` and add the following lines at the top:
 
         // toggle this to change the log config
-        define('DEV', false);
+        define('DEV', true);
         ini_set('display_errors', DEV ? 'On' : 'Off');
+        ini_set('error_reporting', DEV ? 'E_ALL & ~E_WARNING' : 'E_ALL & ~E_WARNING & ~E_DEPRECATED & ~E_STRICT');
         ini_set('ignore_repeated_errors', 'On');
         ini_set("log_errors", 1);
-        ini_set("error_log", "c:/ProgramFiles/nginx-1.7.7/logs/php-error.log");
+        ini_set("error_log", "d:/ProgramFiles/nginx-1.7.7/logs/php-error.log");
