@@ -1,0 +1,15 @@
+{
+    "name": "main",
+    "private" : true,
+
+    "devDependencies" : {
+        "grunt" :                       "~0.4.5",
+        "grunt-cssc":                   "*",
+        "grunt-contrib-jshint":         "*",
+        "grunt-contrib-concat":         "*",
+        "grunt-contrib-sass":           "*",
+        "grunt-contrib-cssmin":         "*",
+        "grunt-contrib-watch":          "*",
+        "matchdep":                     "*"
+    }
+}

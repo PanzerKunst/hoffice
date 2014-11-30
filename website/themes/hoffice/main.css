@@ -1,0 +1,89 @@
+/* Bourbon 4.0.2
+ * http://bourbon.io
+ * Copyright 2011-2014 thoughtbot, inc.
+ * MIT License */
+/* apply a natural box layout model to all elements, but allowing components to change */
+*,
+*:before,
+*:after {
+  box-sizing: inherit; }
+
+img,
+iframe,
+embed {
+  max-width: 100%; }
+
+a,
+span {
+  display: inline-block; }
+
+html {
+  overflow-y: scroll;
+  box-sizing: border-box; }
+
+body {
+  font-size: 14px; }
+
+h1,
+h2 {
+  text-rendering: optimizelegibility;
+  font-smoothing: antialiased; }
+
+h1 {
+  font-size: 25px;
+  text-align: center; }
+  @media screen and (min-width: 960px) {
+    h1 {
+      font-size: 42px; } }
+
+h2 {
+  font-size: 20px;
+  margin-top: 0; }
+  @media screen and (min-width: 960px) {
+    h2 {
+      font-size: 30px; } }
+
+h3 {
+  font-size: 18px;
+  margin-bottom: 0.5em; }
+  @media screen and (min-width: 960px) {
+    h3 {
+      font-size: 20px; } }
+
+h4 {
+  font-size: 18px; }
+
+p,
+span,
+li,
+a,
+label {
+  line-height: 1.75em; }
+  @media screen and (min-width: 960px) {
+    p,
+    span,
+    li,
+    a,
+    label {
+      font-size: 16px; } }
+
+ul {
+  padding-left: 1.5em; }
+
+a,
+a:visited {
+  color: #c40064;
+  cursor: pointer; }
+
+a:hover,
+a:focus {
+  color: #c40064;
+  text-decoration: none; }
+
+blockquote {
+  margin: 0; }
+
+.centered-contents {
+  text-align: center; }
+
+/*# sourceMappingURL=main.css.map */

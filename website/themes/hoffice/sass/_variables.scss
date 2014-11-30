@@ -1,0 +1,21 @@
+$action-color: #c40064;
+
+$page-side-padding: 1em;
+
+$line-height-project: 1.75em;
+
+$large-screen-min-width: 68.57142857142857em; // @ 14px = 960px
+$large-screen-mq-breakpoint: 960px; // Can't use ems because inside @media font size is always the default browser font size
+
+$sprite-url: 'images/sprite';
+
+
+// From Bootstrap
+$font-size-base: 14px;
+$font-size-h1: 42px;
+$font-size-h2: 30px;
+$font-size-h3: 20px;
+$font-size-h4: 18px;
+
+
+$font-size-body-large-screen: 16px;

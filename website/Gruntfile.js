@@ -40,18 +40,8 @@ module.exports = function (grunt) {
             dist: {
                 src: [
                     // Libs
-                    "libs/h5bp/modernizr-custom.js",
-                    "libs/p.js",
-                    "libs/jquery-2.1.1.min.js",
-                    "libs/fastclick.js",
-                    "libs/lodash.min.js",
-                    "libs/gsap/TweenLite.min.js",
-                    "libs/gsap/CSSPlugin.min.js",
-                    "libs/gsap/EasePack.min.js",
-                    "libs/jquery.visible.js",    // The minified version has bug https://github.com/customd/jquery-visible/issues/21
 
                     // Global
-                    "javascripts/global.js",
 
                     // Common
 
@@ -60,19 +50,17 @@ module.exports = function (grunt) {
                     // Models
 
                     // Controllers
-                    "javascripts/controllers/base.js",
-                    "javascripts/controllers/index.js"
 
                     // Templates
                 ],
-                dest: 'public/<%= pkg.name %>.js'
+                dest: 'themes/hoffice/<%= pkg.name %>.js'
             }
         },
 
         sass: {
             build: {
                 files: {
-                    'public/<%= pkg.name %>.css': 'sass/main.scss'
+                    'themes/hoffice/<%= pkg.name %>.css': 'themes/hoffice/sass/main.scss'
                 }
             }
         },
@@ -95,12 +83,12 @@ module.exports = function (grunt) {
             build: {
                 src: [
                     // Libs
-                    'libs/h5bp/normalize.css',
+                    'themes/hoffice/libs/h5bp/normalize.css',
 
                     // Rest
-                    'public/<%= pkg.name %>.css'
+                    'themes/hoffice/<%= pkg.name %>.css'
                 ],
-                dest: 'public/<%= pkg.name %>-v1.css'
+                dest: 'themes/hoffice/<%= pkg.name %>-v1.css'
             }
         },
 
