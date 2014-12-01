@@ -21,26 +21,27 @@
 	<link rel="stylesheet" href="{{ theme_url }}/main-v1.css" type="text/css" />
 </head>
 <body>
+	<header {% if is_front_page == false %} data-header-image-url="{{ current_page.url }}{{ meta.header_image }}" {% endif %}>
+        <a href="{{ base_url }}">{{ site_title }}</a>
 
-	<header id="header">
-        <h1><a href="{{ base_url }}">{{ site_title }}</a></h1>
+<!--
+        {% if is_front_page %}
         <ul class="nav">
             {% for page in pages %}
             <li><a href="{{ page.url }}">{{ page.title }}</a></li>
             {% endfor %}
         </ul>
+        {% endif %}
+
+        -->
+
 	</header>
 
 	<section id="content">
         {{ content }}
 	</section>
 	
-	<footer id="footer">
-		<div>
-			<a href="http://picocms.org/">Pico</a> was made by <a href="http://gilbert.pellegrom.me">Gilbert Pellegrom</a> 
-			from <a href="http://dev7studios.com">Dev7studios</a>.
-		</div>
+	<footer>
 	</footer>
-    
 </body>
 </html>

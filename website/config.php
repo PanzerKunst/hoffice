@@ -22,5 +22,5 @@ $config['custom_setting'] = 'Hello'; 	// Can be accessed by {{ config.custom_set
 
 */
 
+$config['site_title'] = 'Hoffice';
 $config['theme'] = 'hoffice';
-

@@ -1,5 +1,6 @@
 /*
 Title: Vad är Hoffice?
+HeaderImage: header.jpg
 */
 
 # Vad är Hoffice?
