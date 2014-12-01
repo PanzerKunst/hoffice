@@ -28,14 +28,19 @@
 4. Access [http://localhost/test.php](http://localhost/test.php) and check that the page loads correctly
 
 
-# Pico installation
+# Wordpress installation
 
-1. Copy the contents of `c:\Pro\Pico` (Github clone) to `c:\ProgramFiles\nginx-1.7.7\html`
-2. To be able to access sub-dirs, add the following line to the `server { location /` section: `try_files $uri $uri/ /index.php$args;` (see [https://github.com/xybu/nginx-conf/blob/master/picocms.conf](https://github.com/xybu/nginx-conf/blob/master/picocms.conf))
-3. To point to the IDEA project:
+1. Extract `wordpress-X.Y.Z.zip` to `c:\ProgramFiles\nginx-1.7.7\html`
+2. To point to the IDEA project:
     * Change the `root` directive inside the `location /` block to `root   c:/Pro/hoffice/website;`
     * Change the `root` directive inside the `location ~ \.php$` block to `root           c:/Pro/hoffice/website;`
     * Change the `fastcgi_param` directive inside the `location ~ \.php$` block to `SCRIPT_FILENAME  c:/Pro/hoffice/website/$fastcgi_script_name;`
+3. Activate the MySQL extension for PHP: copy `php.ini-development` to `php.ini` and uncomment the following 2 lines:
+
+        include_path = "."
+        extension_dir = "ext"
+        extension=php_mysql.dll
+
 4. Restart Nginx: `nginx -s reload`
 5. Reload [http://localhost](http://localhost)
 6. Hide warnings from the web page: edit `website/index.php` and add the following lines at the top:
