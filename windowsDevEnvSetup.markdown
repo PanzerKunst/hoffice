@@ -42,13 +42,13 @@
         extension=php_mysql.dll
 
 4. Restart PHP: `php-cgi.exe -b 127.0.0.1:9000` and Nginx: `nginx -s reload`
-5. Reload [http://localhost](http://localhost)
-6. Hide warnings from the web page: edit `website/index.php` and add the following lines at the top:
+5. Create DB on server and allow external access:
 
-        // toggle this to change the log config
-        define('DEV', true);
-        ini_set('display_errors', DEV ? 'On' : 'Off');
-        ini_set('error_reporting', DEV ? 'E_ALL & ~E_WARNING' : 'E_ALL & ~E_WARNING & ~E_DEPRECATED & ~E_STRICT');
-        ini_set('ignore_repeated_errors', 'On');
-        ini_set("log_errors", 1);
-        ini_set("error_log", "d:/ProgramFiles/nginx-1.7.7/logs/php-error.log");
+        $ mysql -u root -p
+        > CREATE DATABASE `hoffice_wordpress` CHARACTER SET utf8 COLLATE utf8_swedish_ci;
+        > GRANT ALL ON `hoffice_wordpress`.* TO `root`@'%' IDENTIFIED BY 'AcB65oRo!F';
+        > FLUSH PRIVILEGES;
+
+6. Update `my.cnf` to allow remote access: `sudo vi /etc/mysql/my.cnf` then add a new `bind-address` line: `bind-address = 188.40.99.15`.
+7. `sudo service mysql restart`
+8. Run Wordpress installation by accessing [http://localhost](http://localhost)

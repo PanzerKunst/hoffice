@@ -7,9 +7,12 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
+
+    <?php $imageField = get_field("header_image", get_the_ID());
+        echo '<header class="entry-header" style="background-image: url(' . $imageField["url"] . ')">
+            <h1 class="entry-title">' . get_the_title() . '</h1>
+        </header>';
+    ?>
 
 	<div class="entry-content">
 		<?php the_content(); ?>

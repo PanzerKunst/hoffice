@@ -3,7 +3,9 @@
 }
 
 .hentry {
-	margin: 0 0 1.5em;
+  margin: 0 0 1.5em;
+
+  line-height: 1.75em;
 }
 
 .byline,
@@ -25,4 +27,30 @@
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
+}
+
+.entry-header {
+  height:100vh;
+
+  background-size: cover;
+  background-position: center center;
+
+  color: white;
+  text-align: center;
+
+  > h1 {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+    font-size: 100px;
+  }
+}
+
+.entry-content {
+  max-width: $max-content-width;
+  padding: 0 1em;
+
+  margin-left: auto;
+  margin-right: auto;
 }

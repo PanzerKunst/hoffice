@@ -132,5 +132,11 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 function insertPageThumbnail($page) {
-    echo "<li>" . apply_filters('title', $page->post_title) . "</li>";
+    $imageThumbnailField = get_field("thumbnail", $page->ID);
+    echo '<li>
+        <a href="' . $page->guid . '">
+            <img src="' . $imageThumbnailField["url"] . '"/>
+            <h2>' . apply_filters('title', $page->post_title) . '</h2>
+        </a>
+    </li>';
 }
