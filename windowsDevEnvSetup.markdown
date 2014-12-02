@@ -41,7 +41,7 @@
         extension_dir = "ext"
         extension=php_mysql.dll
 
-4. Restart Nginx: `nginx -s reload`
+4. Restart PHP: `php-cgi.exe -b 127.0.0.1:9000` and Nginx: `nginx -s reload`
 5. Reload [http://localhost](http://localhost)
 6. Hide warnings from the web page: edit `website/index.php` and add the following lines at the top:
 

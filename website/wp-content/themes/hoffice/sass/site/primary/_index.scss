@@ -1,0 +1,19 @@
+#page-thumbnails-wrapper {
+  text-align: center;
+
+  > ul {
+    display: inline;
+    list-style-type: none;
+    margin: 0;
+  }
+
+  li {
+    display: inline-block;
+
+    $side-margin-width: 14px;
+
+    margin: 0 1em 10%;
+
+    max-width: $min-viewport-width - 2 * $side-margin-width;
+  }
+}

@@ -40,8 +40,16 @@ module.exports = function (grunt) {
             dist: {
                 src: [
                     // Libs
+                    "wp-content/themes/hoffice/libs/p.js",
+                    "wp-content/themes/hoffice/libs/jquery-2.1.1.min.js",
+                    "wp-content/themes/hoffice/libs/lodash.min.js",
+                    "wp-content/themes/hoffice/libs/gsap/TweenLite.min.js",
+                    "wp-content/themes/hoffice/libs/gsap/CSSPlugin.min.js",
+                    "wp-content/themes/hoffice/libs/gsap/EasePack.min.js",
+                    // "libs/jquery.visible.js",    The minified version has bug https://github.com/customd/jquery-visible/issues/21
 
                     // Global
+                    "wp-content/themes/hoffice/js/hoffice/global.js",
 
                     // Common
 
@@ -50,17 +58,19 @@ module.exports = function (grunt) {
                     // Models
 
                     // Controllers
+                    "wp-content/themes/hoffice/js/hoffice/controllers/base.js",
+                    "wp-content/themes/hoffice/js/hoffice/controllers/index.js"
 
                     // Templates
                 ],
-                dest: 'themes/hoffice/<%= pkg.name %>.js'
+                dest: 'wp-content/themes/hoffice/js/hoffice.js'
             }
         },
 
         sass: {
             build: {
                 files: {
-                    'themes/hoffice/<%= pkg.name %>.css': 'themes/hoffice/sass/main.scss'
+                    'wp-content/themes/hoffice/style.css': 'wp-content/themes/hoffice/sass/style.scss'
                 }
             }
         },
@@ -83,12 +93,11 @@ module.exports = function (grunt) {
             build: {
                 src: [
                     // Libs
-                    'themes/hoffice/libs/h5bp/normalize.css',
 
                     // Rest
-                    'themes/hoffice/<%= pkg.name %>.css'
+                    'wp-content/themes/hoffice/style.css'
                 ],
-                dest: 'themes/hoffice/<%= pkg.name %>-v1.css'
+                dest: 'wp-content/themes/hoffice/style.css'
             }
         },
 
@@ -99,7 +108,7 @@ module.exports = function (grunt) {
             },
 
             css: {
-                files: ['sass/**/*.scss'],
+                files: ['wp-content/themes/hoffice/sass/**/*.scss'],
                 tasks: ['buildcss']
             }
         }

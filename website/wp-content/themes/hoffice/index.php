@@ -16,6 +16,17 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
+            <div id="page-thumbnails-wrapper"><ul>
+            <?php $get_pagesArgs = array(
+                'post_type' => 'page',
+                'post_status' => 'publish');
+
+                foreach(get_pages($get_pagesArgs) as $page) {
+                    insertPageThumbnail($page);
+                }
+            ?>
+            </ul></div>
+
 		<?php if ( have_posts() ) : ?>
 
 			<?php /* Start the Loop */ ?>
