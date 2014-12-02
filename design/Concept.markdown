@@ -1,7 +1,7 @@
 # Index page
 
-The index page has a full-width picture with a color processing à la Agigen. "Hoffice" is written in the middle of that image, in white.
-At the top right of this picture, is a hamburger menu button, which when clicked displays a full-screen menu à la Agigen.
+The index page has a full-width picture with a color processing Ã  la [Agigen](http://www.agigen.se). "Hoffice" is written in the middle of that image, in white.
+At the top right of this picture, is a hamburger menu button, which when clicked displays a full-screen menu Ã  la Agigen.
 
 Below the full-width picture, is a list of pages. Each list item is clickable, and composed of:
 
