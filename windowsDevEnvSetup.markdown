@@ -41,6 +41,10 @@
         extension_dir = "ext"
         extension=php_mysql.dll
 
+4. Increase the max size for file uploads:
+    1. Edit `php.ini` and set `upload_max_filesize = 7M`
+    2. Edit `nginx.conf` and set add `client_max_body_size 8m;` (same as PHP's `post_max_size`) in the `http` section.
+        
 4. Restart PHP: `php-cgi.exe -b 127.0.0.1:9000` and Nginx: `nginx -s reload`
 5. Create DB on server and allow external access:
 
