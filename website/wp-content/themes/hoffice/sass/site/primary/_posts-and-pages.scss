@@ -3,9 +3,7 @@
 }
 
 .hentry {
-  margin: 0 0 1.5em;
-
-  line-height: 1.75em;
+  line-height: $default-line-height;
 }
 
 .byline,
@@ -18,39 +16,47 @@
 	display: inline;
 }
 
-.page-content,
-.entry-content,
-.entry-summary {
-	margin: 1.5em 0 0;
-}
-
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
 }
 
-.entry-header {
-  height:100vh;
+#page {
+  display: none;
+}
 
-  background-size: cover;
-  background-position: center center;
+h2 {
+  font-size: 28px;
+}
 
-  color: white;
-  text-align: center;
+body.page,
+body.single {
+  .entry-content {
+    max-width: $max-content-width;
 
-  > h1 {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    padding-left: $default-spacer-size;
+    padding-right: $default-spacer-size;
 
-    font-size: 100px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
+.hoffice-page-content,
 .entry-content {
-  max-width: $max-content-width;
-  padding: 0 1em;
+  padding-top: $default-spacer-size * 7;
 
-  margin-left: auto;
-  margin-right: auto;
+  @include large-screen {
+    div, span, applet, object, iframe,
+    p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, font, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td {
+      font-size: 20px;
+      line-height: $default-line-height;
+    }
+  }
 }

@@ -29,3 +29,9 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php get_footer(); ?>
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        CBR.Controllers.PostAndPage().run();
+    });
+</script>

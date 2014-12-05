@@ -1,0 +1,52 @@
+#content-header {
+  background-size: auto, cover;
+  background-position: 0% 0%, center center;
+
+  position: relative;
+
+  > h1 {
+    letter-spacing: 0.2em;
+    font-family: Chomp;
+    font-size: 35px;
+
+    @include large-screen {
+      font-size: 6vw;
+    }
+  }
+}
+
+#scroll-to-content {
+  border: none;
+  box-shadow: none;
+  padding: 0;
+
+  $scroll-to-content-size: 60px;
+
+  width: $scroll-to-content-size;
+  height: $scroll-to-content-size;
+
+  position: absolute;
+  bottom: $default-spacer-size;
+  left: 50%;
+  margin-left: -$scroll-to-content-size/2;
+
+
+  $down-arrow-button-image-location-x: 0;
+  $down-arrow-button-image-location-y: 0;
+
+  background: transparent url($sprite-url) repeat-x scroll $down-arrow-button-image-location-x $down-arrow-button-image-location-y;
+
+  @include hdpi-sprite;
+
+  @include hidpi {
+    background-position: half-pos($down-arrow-button-image-location-x, $down-arrow-button-image-location-y);
+  }
+
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  @include transition-all-attributes;
+}

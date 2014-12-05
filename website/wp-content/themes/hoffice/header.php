@@ -24,10 +24,19 @@
 
 	<header id="masthead" class="site-header" role="banner">
 		<div class="site-branding">
-			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-		</div><!-- .site-branding -->
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                <?php
+                    $opening_wrapper_tag = "";
+                    $closing_wrapper_tag = "";
 
+                    if(is_home()) {
+                        $opening_wrapper_tag = "<h1>";
+                        $closing_wrapper_tag = "</h1>";
+                    }
+                    echo $opening_wrapper_tag . get_bloginfo( 'name' ) . $closing_wrapper_tag;
+                ?>
+            </a>
+		</div><!-- .site-branding -->
 	</header><!-- #masthead -->
 
-<div id="content" class="site-content">
+	<div id="content" class="site-content">

@@ -20,3 +20,25 @@
 @mixin clearfix-after() {
 	clear: both;
 }
+
+@mixin large-screen {
+  @media screen and (min-width: $max-content-width) {
+    @content;
+  }
+}
+
+
+// Retina sprite mixin and function inspired by Paul Stamatiou (http://paulstamatiou.com/responsive-retina-blog-development-part-2)
+
+@mixin hdpi-sprite {
+  @include retina-image($sprite-url, 1000px 250px);  // Sprite dimensions, halved
+}
+// silly function to divide the width and height to save me 2 seconds
+// whenever I need to calculate the halved retina background position
+@function half-pos($w, $h) {
+  @return $w/2 $h/2;
+}
+
+@mixin transition-all-attributes {
+  @include transition(all 300ms ease 0s);
+}

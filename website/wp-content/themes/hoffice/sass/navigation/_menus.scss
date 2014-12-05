@@ -1,64 +1,72 @@
 .main-navigation {
-	clear: both;
-	display: block;
-	float: left;
-	width: 100%;
+  clear: both;
+}
 
-	ul {
-		list-style: none;
-		margin: 0;
-		padding-left: 0;
+.menu-main-menu-container {
+  text-align: center;
 
-		ul {
-			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-			float: left;
-			position: absolute;
-			top: 1.5em;
-			left: -999em;
-			z-index: 99999;
+  background-color: #F0F0F0;
+}
 
-			ul {
-				left: -999em;
-				top: 0;
-			}
+#menu-main-menu {
+  display: inline;
+  list-style-type: none;
+  margin: 0;
 
-			li {
-				&:hover > ul {
-					left: 100%;
-				}
-			}
+  > .menu-item {
+    display: inline-block;
 
-			a {
-				width: 200px;
-			}
+    margin: 0 $default-spacer-size 4*$default-spacer-size;
 
-			:hover > a {
-			}
+    max-width: $min-content-width - 2 * $default-spacer-size;
+  }
 
-			a:hover {
-			}
-		}
+  a {
+    display: block;
 
-		li:hover > ul {
-			left: auto;
-		}
-	}
-	li {
-		float: left;
-		position: relative;
+    color: $color__text-main;
+    text-decoration: none;
 
-		&:hover > a {
-		}
-	}
-	a {
-		display: block;
-		text-decoration: none;
-	}
+    > div {
+      padding: $default-spacer-size/2 0;
 
-	.current_page_item > a,
-	.current-menu-item > a,
-	.current_page_ancestor > a {
-	}
+      background-color: white;
+
+      @include transition-all-attributes;
+    }
+
+    &:hover {
+      .overlay-for-hover {
+        opacity: 0.1;
+      }
+
+      > div {
+        background-color: $color__action;
+        color: white;
+      }
+    }
+  }
+
+  figure {
+    position: relative;
+
+    > .overlay-for-hover {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      background-color: black;
+      opacity: 0;
+
+      @include transition-all-attributes;
+    }
+
+    img {
+      display: block;
+    }
+  }
 }
 
 /* Small menu */
@@ -98,3 +106,20 @@
 	text-align: right;
 	width: 50%;
 }
+
+.site-header {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  height: 50px;
+}
+
+#colophon {
+  background-color: #252525;
+  color: white;
+}
+
+.site-branding > a {
+  color: white;
+}
+

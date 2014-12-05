@@ -39,13 +39,8 @@ module.exports = function (grunt) {
             },
             dist: {
                 src: [
-                    // Libs
+                    // Non-CDN libs
                     "wp-content/themes/hoffice/libs/p.js",
-                    "wp-content/themes/hoffice/libs/jquery-2.1.1.min.js",
-                    "wp-content/themes/hoffice/libs/lodash.min.js",
-                    "wp-content/themes/hoffice/libs/gsap/TweenLite.min.js",
-                    "wp-content/themes/hoffice/libs/gsap/CSSPlugin.min.js",
-                    "wp-content/themes/hoffice/libs/gsap/EasePack.min.js",
                     // "libs/jquery.visible.js",    The minified version has bug https://github.com/customd/jquery-visible/issues/21
 
                     // Global
@@ -59,7 +54,8 @@ module.exports = function (grunt) {
 
                     // Controllers
                     "wp-content/themes/hoffice/js/hoffice/controllers/base.js",
-                    "wp-content/themes/hoffice/js/hoffice/controllers/index.js"
+                    "wp-content/themes/hoffice/js/hoffice/controllers/index.js",
+                    "wp-content/themes/hoffice/js/hoffice/controllers/postAndPage.js"
 
                     // Templates
                 ],
@@ -93,6 +89,7 @@ module.exports = function (grunt) {
             build: {
                 src: [
                     // Libs
+                    'wp-content/themes/hoffice/libs/MyFontsWebfontsKit.css',
 
                     // Rest
                     'wp-content/themes/hoffice/style.css'

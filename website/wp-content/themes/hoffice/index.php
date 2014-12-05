@@ -16,41 +16,54 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-            <div id="page-thumbnails-wrapper"><ul>
-            <?php $get_pagesArgs = array(
-                'post_type' => 'page',
-                'post_status' => 'publish');
+            <div id="content-header">
+                <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+                <button id="scroll-to-content"></button>
+            </div>
 
-                foreach(get_pages($get_pagesArgs) as $page) {
-                    insertPageThumbnail($page);
-                }
-            ?>
-            </ul></div>
+            <?php wp_nav_menu(
+                array(
+                    'theme_location' => 'primary',
+                    'walker' => new Walker_Index_Page_Menu(),
+                    'link_before' => '<div>',
+                    'link_after' => '</div>',
+                    'container_class' => 'menu-main-menu-container hoffice-page-content',
+                    'items_wrap' => '<ul id="%1$s" class="%2$s"><!--%3$s--></ul>'
+                )
+            ); ?>
 
-		<?php if ( have_posts() ) : ?>
+            <?php if ( have_posts() ) : ?>
 
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+                <section id="post-thumbnails">
 
-				<?php
-					/* Include the Post-Format-specific template for the content.
-					 * If you want to override this in a child theme, then include a file
-					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-					 */
-					//TODO get_template_part( 'content', get_post_format() );
-				?>
+                <?php /* Start the Loop */ ?>
+                <?php while ( have_posts() ) : the_post(); ?>
 
-			<?php endwhile; ?>
+                    <?php
+                        /* Include the Post-Format-specific template for the content.
+                         * If you want to override this in a child theme, then include a file
+                         * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+                         */
+                        get_template_part( 'content', 'homepage-post-item' );
+                    ?>
 
-			<?php hoffice_paging_nav(); ?>
+                <?php endwhile; ?>
 
-		<?php else : ?>
+                </section>
 
-			<?php get_template_part( 'content', 'none' ); ?>
+            <?php else : ?>
 
-		<?php endif; ?>
+                <?php get_template_part( 'content', 'none' ); ?>
+
+            <?php endif; ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
 <?php get_footer(); ?>
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        CBR.Controllers.Index().run();
+    });
+</script>

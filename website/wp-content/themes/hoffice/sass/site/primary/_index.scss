@@ -1,19 +1,42 @@
-#page-thumbnails-wrapper {
-  text-align: center;
+body.home {
+ .post {
+   > .entry-header {
+     @include clearfix;
 
-  > ul {
-    display: inline;
-    list-style-type: none;
-    margin: 0;
-  }
+     > h2,
+     > div {
+       float: left;
+     }
+   }
 
-  li {
-    display: inline-block;
+   > .entry-footer {
+     display: none;
+   }
 
-    $side-margin-width: 14px;
+   &.format-standard,
+   &.format-aside,
+   &.format-quote {
+     > .entry-content {
+       display: none;
+     }
+   }
 
-    margin: 0 1em 10%;
+   // Hidden before set to correct size in JS
+   &.format-video {
+     display: none;
+   }
+ }
+}
 
-    max-width: $min-content-width - 2 * $side-margin-width;
+#content-header {
+  @include background-image(linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("images/index-header.jpg"));
+}
+
+#post-thumbnails {
+  background-color: $color__action;
+  color: white;
+
+  a {
+    color: white;
   }
 }
