@@ -15,6 +15,7 @@
 
   > .menu-item {
     display: inline-block;
+    vertical-align: bottom;
 
     margin: 0 $default-spacer-size 4*$default-spacer-size;
 
@@ -28,7 +29,7 @@
     text-decoration: none;
 
     > div {
-      padding: $default-spacer-size/2 0;
+      min-height: 84px; // Enough for 2 lines of text
 
       background-color: white;
 

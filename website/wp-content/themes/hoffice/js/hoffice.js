@@ -103,18 +103,29 @@ CBR.Controllers = CBR.Controllers || {};
         this._initElements();
         this._initEvents();
 
+        this._verticallyCenterTextInMainMenu();
         this._resizeAndShowVideos();
     };
 
     c._initElements = function () {
         base.initElements();
 
+        this.$mainMenuSpanContainers = $("#menu-main-menu").find("a").children("div");
         this.$videoArticles = $("article.format-video");
         this.$videoIframes = this.$videoArticles.find("iframe");
     };
 
     c._initEvents = function () {
         base.initEvents();
+    };
+
+    c._verticallyCenterTextInMainMenu = function() {
+        this.$mainMenuSpanContainers.each(function (index, element) {
+            var $div = $(element);
+            var $span = $div.children();
+            var paddingHeight = ($div.height() - $span.height()) / 2;
+            $span.css("padding-top", paddingHeight);
+        });
     };
 
     c._resizeAndShowVideos = function() {

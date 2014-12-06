@@ -1,3 +1,199 @@
+/* TODO: remove
+@font-face {
+  font-family: 'Oxygen';
+  src: url("fonts/oxygen/Oxygen.otf");
+}
+@font-face {
+  font-family: 'Oxygen';
+  src: url("fonts/oxygen/Oxygen-Bold.otf");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Open-Sans';
+  src: url("fonts/open-sans/OpenSans-Regular.ttf");
+}
+@font-face {
+  font-family: 'Open-Sans';
+  src: url("fonts/open-sans/OpenSans-Bold.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Open-Sans";
+  src: url("fonts/open-sans/OpenSans-Italic.ttf");
+  font-style: italic;
+}
+@font-face {
+  font-family: "Open-Sans";
+  src: url("fonts/open-sans/OpenSans-BoldItalic.ttf");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Source-Sans-Pro';
+  src: url("fonts/source-sans-pro/SourceSansPro-Regular.otf");
+}
+@font-face {
+  font-family: 'Source-Sans-Pro';
+  src: url("fonts/source-sans-pro/SourceSansPro-Bold.otf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Source-Sans-Pro";
+  src: url("fonts/source-sans-pro/SourceSansPro-It.otf");
+  font-style: italic;
+}
+@font-face {
+  font-family: "Source-Sans-Pro";
+  src: url("fonts/source-sans-pro/SourceSansPro-BoldIt.otf");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Clear-Sans';
+  src: url("fonts/clear-sans/ClearSans-Regular.ttf");
+}
+@font-face {
+  font-family: 'Clear-Sans';
+  src: url("fonts/clear-sans/ClearSans-Bold.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Clear-Sans";
+  src: url("fonts/clear-sans/ClearSans-Italic.ttf");
+  font-style: italic;
+}
+@font-face {
+  font-family: "Clear-Sans";
+  src: url("fonts/clear-sans/ClearSans-BoldItalic.ttf");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Fira-sans';
+  src: url("fonts/fira-sans/FiraSansOT-Regular.otf");
+}
+@font-face {
+  font-family: 'Fira-sans';
+  src: url("fonts/fira-sans/FiraSansOT-Bold.otf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Fira-sans";
+  src: url("fonts/fira-sans/FiraSansOT-RegularItalic.otf");
+  font-style: italic;
+}
+@font-face {
+  font-family: "Fira-sans";
+  src: url("fonts/fira-sans/FiraSansOT-BoldItalic.otf");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Karla';
+  src: url("fonts/karla/Karla-Regular.ttf");
+}
+@font-face {
+  font-family: 'Karla';
+  src: url("fonts/karla/Karla-Bold.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Karla";
+  src: url("fonts/karla/Karla-Italic.ttf");
+  font-style: italic;
+}
+@font-face {
+  font-family: "Karla";
+  src: url("fonts/karla/Karla-BoldItalic.ttf");
+  font-weight: bold;
+  font-style: italic;
+} */
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("fonts/roboto/Roboto-Regular.ttf");
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url("fonts/roboto/Roboto-Bold.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/roboto/Roboto-Italic.ttf");
+  font-style: italic;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/roboto/Roboto-BoldItalic.ttf");
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* TODO @font-face {
+  font-family: 'Merriweather-Sans';
+  src: url("fonts/merriweather-sans/MerriweatherSans-Regular.otf");
+}
+@font-face {
+  font-family: 'Merriweather-Sans';
+  src: url("fonts/merriweather-sans/MerriweatherSans-Bold.otf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Merriweather-Sans";
+  src: url("fonts/merriweather-sans/MerriweatherSans-Italic.otf");
+  font-style: italic;
+}
+@font-face {
+  font-family: "Merriweather-Sans";
+  src: url("fonts/merriweather-sans/MerriweatherSans-BoldItalic.otf");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Merriweather-Sans';
+  src: url("fonts/merriweather-sans/MerriweatherSans-Light.otf");
+  font-weight: lighter;
+}
+
+@font-face {
+  font-family: 'Aileron';
+  src: url("fonts/aileron/Aileron-Regular.otf");
+}
+@font-face {
+  font-family: 'Aileron';
+  src: url("fonts/aileron/Aileron-Bold.otf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'Aileron';
+  src: url("fonts/aileron/Aileron-Italic.otf");
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Aileron';
+  src: url("fonts/aileron/Aileron-BoldItalic.otf");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Aileron';
+  src: url("fonts/aileron/Aileron-Light.otf");
+  font-weight: lighter;
+}
+
+@font-face {
+  font-family: "Bosun";
+  src: url("fonts/bosun03.otf");
+  font-weight: bold;
+  font-style: italic;
+}
+
 @font-face {
   font-family: "Chomp";
   src: url("fonts/Chomp.ttf");
@@ -6,4 +202,4 @@
 @font-face {
   font-family: "Chawp";
   src: url("fonts/chawp-master/chawp.ttf");
-}
+} */

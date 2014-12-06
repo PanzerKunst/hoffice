@@ -25,8 +25,8 @@ get_header(); ?>
                 array(
                     'theme_location' => 'primary',
                     'walker' => new Walker_Index_Page_Menu(),
-                    'link_before' => '<div>',
-                    'link_after' => '</div>',
+                    'link_before' => '<div><p>',
+                    'link_after' => '</p></div>',
                     'container_class' => 'menu-main-menu-container hoffice-page-content',
                     'items_wrap' => '<ul id="%1$s" class="%2$s"><!--%3$s--></ul>'
                 )

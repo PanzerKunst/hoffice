@@ -25,3 +25,8 @@ Each page starts with a full-width picture, but in true colors this time. The Ho
 Below, is the page/post's text and media, over write background.
 
 Same footer as on the index page.
+
+
+# Websites for inspiration
+
+[www.rezo-zero.com/en](http://www.rezo-zero.com/en)
