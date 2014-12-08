@@ -135,7 +135,7 @@ CBR.Controllers = CBR.Controllers || {};
         this.$videoIframes.attr("width", width);
         this.$videoIframes.attr("height", height);
 
-        this.$videoArticles.show();
+        this.$videoArticles.css("display", "inline-block");
     };
 });
 ;CBR.Controllers.PostAndPage = P(CBR.Controllers.Base, function (c, base) {

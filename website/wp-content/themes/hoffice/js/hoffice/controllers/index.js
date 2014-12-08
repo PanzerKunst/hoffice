@@ -35,6 +35,6 @@ CBR.Controllers.Index = P(CBR.Controllers.Base, function (c, base) {
         this.$videoIframes.attr("width", width);
         this.$videoIframes.attr("height", height);
 
-        this.$videoArticles.show();
+        this.$videoArticles.css("display", "inline-block");
     };
 });

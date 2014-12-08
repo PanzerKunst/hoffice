@@ -79,7 +79,7 @@ function hoffice_posted_on() {
 	);
 
 	$posted_on = sprintf(
-		_x( 'Posted on %s', 'post date', 'hoffice' ),
+		_x( '%s', 'post date', 'hoffice' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 

@@ -24,3 +24,31 @@
 10.5 Index page
 --------------------------------------------------------------*/
 @import "primary/index";
+
+
+#page {
+  display: none;
+}
+
+.hoffice-page-content,
+.entry-content {
+  padding-top: $default-spacer-size;
+
+  @include large-screen {
+    div, span, applet, object, iframe,
+    p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, font, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td {
+      font-size: 20px;
+      line-height: $default-line-height;
+    }
+  }
+}
+
+.site-content {
+  padding-bottom: $default-spacer-size;
+}

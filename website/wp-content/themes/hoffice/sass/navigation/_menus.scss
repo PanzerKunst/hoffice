@@ -17,9 +17,9 @@
     display: inline-block;
     vertical-align: bottom;
 
-    margin: 0 $default-spacer-size 4*$default-spacer-size;
+    margin: 0 $spacer-unit-size 4*$spacer-unit-size $spacer-unit-size;
 
-    max-width: $min-content-width - 2 * $default-spacer-size;
+    max-width: $min-content-width - 2 * $spacer-unit-size;
   }
 
   a {
@@ -38,7 +38,7 @@
 
     &:hover {
       .overlay-for-hover {
-        opacity: 0.1;
+        opacity: 0.2;
       }
 
       > div {
@@ -72,40 +72,40 @@
 
 /* Small menu */
 .menu-toggle {
-	display: none;
+  display: none;
 }
 
 @media screen and (max-width: 600px) {
-	.menu-toggle,
-	.main-navigation.toggled .nav-menu {
-		display: block;
-	}
+  .menu-toggle,
+  .main-navigation.toggled .nav-menu {
+    display: block;
+  }
 
-	.main-navigation ul {
-		display: none;
-	}
+  .main-navigation ul {
+    display: none;
+  }
 }
 
 .site-main .comment-navigation,
 .site-main .paging-navigation,
 .site-main .post-navigation {
-	margin: 0 0 1.5em;
-	overflow: hidden;
+  margin: 0 0 1.5em;
+  overflow: hidden;
 }
 
 .comment-navigation .nav-previous,
 .paging-navigation .nav-previous,
 .post-navigation .nav-previous {
-	float: left;
-	width: 50%;
+  float: left;
+  width: 50%;
 }
 
 .comment-navigation .nav-next,
 .paging-navigation .nav-next,
 .post-navigation .nav-next {
-	float: right;
-	text-align: right;
-	width: 50%;
+  float: right;
+  text-align: right;
+  width: 50%;
 }
 
 .site-header {
@@ -113,6 +113,51 @@
   top: 0;
   z-index: 1;
   height: 50px;
+}
+
+#post-thumbnails {
+  text-align: center;
+
+  > div {
+    background-color: $color__post-thumbnails;
+    color: white;
+
+    display: inline;
+  }
+
+  article {
+    display: inline-block;
+    vertical-align: bottom;
+
+    margin: 0 $spacer-unit-size 4*$spacer-unit-size $spacer-unit-size;
+
+    max-width: $min-content-width - 2 * $spacer-unit-size;
+
+    &.format-standard,
+    &.format-aside,
+    &.format-quote {
+      > .entry-content {
+        display: none;
+      }
+    }
+
+    // Hidden before set to correct size in JS
+    &.format-video {
+      display: none;
+    }
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  a {
+    color: white;
+  }
+
+  .entry-footer {
+    display: none;
+  }
 }
 
 #colophon {
@@ -123,4 +168,3 @@
 .site-branding > a {
   color: white;
 }
-

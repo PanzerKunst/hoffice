@@ -1,42 +1,9 @@
 body.home {
- .post {
-   > .entry-header {
-     @include clearfix;
-
-     > h2,
-     > div {
-       float: left;
-     }
-   }
-
-   > .entry-footer {
-     display: none;
-   }
-
-   &.format-standard,
-   &.format-aside,
-   &.format-quote {
-     > .entry-content {
-       display: none;
-     }
-   }
-
-   // Hidden before set to correct size in JS
-   &.format-video {
-     display: none;
-   }
- }
+  #content {
+    background-color: $color__post-thumbnails;
+  }
 }
 
 #content-header {
   @include background-image(linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("images/index-header.jpg"));
-}
-
-#post-thumbnails {
-  background-color: $color__action;
-  color: white;
-
-  a {
-    color: white;
-  }
 }

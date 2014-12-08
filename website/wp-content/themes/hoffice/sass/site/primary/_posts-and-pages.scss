@@ -21,42 +21,19 @@
 	margin: 0 0 1.5em;
 }
 
-#page {
-  display: none;
-}
-
 h2 {
   font-size: 28px;
 }
 
 body.page,
 body.single {
-  .entry-content {
-    max-width: $max-content-width;
-
-    padding-left: $default-spacer-size;
-    padding-right: $default-spacer-size;
-
-    margin-left: auto;
-    margin-right: auto;
+  .entry-content,
+  .entry-footer {
+    @include max-widthed-content;
   }
 }
 
-.hoffice-page-content,
-.entry-content {
-  padding-top: $default-spacer-size * 7;
-
-  @include large-screen {
-    div, span, applet, object, iframe,
-    p, blockquote, pre,
-    a, abbr, acronym, address, big, cite, code,
-    del, dfn, em, font, ins, kbd, q, s, samp,
-    small, strike, strong, sub, sup, tt, var,
-    dl, dt, dd, ol, ul, li,
-    fieldset, form, label, legend,
-    table, caption, tbody, tfoot, thead, tr, th, td {
-      font-size: 20px;
-      line-height: $default-line-height;
-    }
-  }
+.site-main .post-navigation,
+#comments {
+  @include max-widthed-content;
 }
