@@ -1,17 +1,23 @@
+$header-bar-height: 44px;
+$header-bar-height-large-screen: 73px;
+
 .main-navigation {
   clear: both;
 }
 
-.menu-main-menu-container {
+.index-menu-pages-container {
   text-align: center;
 
   background-color: #F0F0F0;
 }
 
-#menu-main-menu {
-  display: inline;
+ul.menu {
   list-style-type: none;
   margin: 0;
+}
+
+#index-menu-pages {
+  display: inline;
 
   > .menu-item {
     display: inline-block;
@@ -111,8 +117,10 @@
 .site-header {
   position: fixed;
   top: 0;
-  z-index: 1;
-  height: 50px;
+  left: 0;
+  width: 100%;
+
+  z-index: $z-index-menu-bar;
 }
 
 #post-thumbnails {
@@ -165,6 +173,83 @@
   color: white;
 }
 
-.site-branding > a {
-  color: white;
+.site-branding {
+  background-color: rgba(0, 0, 0, 0.5);
+
+  height: $header-bar-height;
+  @include large-screen {
+    height: $header-bar-height-large-screen;
+  }
+
+  @include clearfix;
+
+  > a {
+    float: left;
+
+    font-family: $font__h1;
+    color: white;
+    text-decoration: none;
+
+    // For margin declarations to work
+    display: inline-block;
+
+    margin: $spacer-unit-size/2 0 0 $spacer-unit-size;
+
+    @include large-screen {
+      margin: $spacer-unit-size 0 0 $spacer-unit-size*2;
+    }
+
+    $home-menu-font-size: 20px;
+
+    font-size: $home-menu-font-size;
+
+    // On index page, the text is wrapped in <h1>
+    > h1 {
+      font-size: $home-menu-font-size;
+    }
+
+    @include large-screen {
+      $home-menu-font-size: 30px;
+      font-size: $home-menu-font-size;
+      > h1 {
+        font-size: $home-menu-font-size;
+      }
+    }
+  }
+
+  > button {
+    float: right;
+
+    margin: $spacer-unit-size/2 $spacer-unit-size 0 0;
+
+    @include large-screen {
+      margin: $spacer-unit-size $spacer-unit-size*2 0 0;
+    }
+  }
+}
+
+#header-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: $z-index-header-menu;
+
+  padding-top: $header-bar-height;
+  @include large-screen {
+    padding-top: $header-bar-height-large-screen;
+  }
+
+  background-color: black;
+
+  min-height: 100%;
+
+  overflow: auto;
+
+  display: none;
+
+  .menu-item {
+    text-align: center;
+  }
 }

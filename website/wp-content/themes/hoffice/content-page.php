@@ -11,7 +11,7 @@
     <?php $imageField = get_field("header_image", get_the_ID());
         echo '<header id="content-header" class="entry-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(' . $imageField["url"] . ')">
             <h1 class="entry-title">' . get_the_title() . '</h1>
-            <button id="scroll-to-content"></button>
+            <button id="scroll-to-content" class="styleless"></button>
         </header>';
     ?>
 

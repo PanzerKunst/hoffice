@@ -18,16 +18,17 @@ get_header(); ?>
 
             <div id="content-header">
                 <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-                <button id="scroll-to-content"></button>
+                <button id="scroll-to-content" class="styleless"></button>
             </div>
 
             <?php wp_nav_menu(
                 array(
                     'theme_location' => 'primary',
                     'walker' => new Walker_Index_Page_Menu(),
+                    'menu_id' => 'index-menu-pages',
                     'link_before' => '<div><p>',
                     'link_after' => '</p></div>',
-                    'container_class' => 'menu-main-menu-container hoffice-page-content',
+                    'container_class' => 'index-menu-pages-container hoffice-page-content',
                     'items_wrap' => '<ul id="%1$s" class="%2$s"><!--%3$s--></ul>'
                 )
             ); ?>

@@ -25,6 +25,9 @@
 --------------------------------------------------------------*/
 @import "primary/index";
 
+html.header-menu-open {
+  overflow: hidden;
+}
 
 #page {
   display: none;

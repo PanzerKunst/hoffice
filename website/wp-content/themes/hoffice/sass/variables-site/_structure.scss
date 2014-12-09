@@ -6,3 +6,6 @@ $max-content-width: $min-content-width * 3;
 
 $spacer-unit-size: 14px;
 $default-spacer-size: $spacer-unit-size * 7;
+
+$z-index-header-menu: 1;
+$z-index-menu-bar: $z-index-header-menu + 1;

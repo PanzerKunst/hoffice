@@ -4,22 +4,25 @@
 
   position: relative;
 
-  > h1 {
-    letter-spacing: 0.2em;
-    font-family: Chomp;
-    font-size: 35px;
+  > .entry-title {
+    position: relative;
+    top: 50%;
+    @include transform(translateY(-50%));
+
+    font-family: $font__h1;
+    color: white;
+
+    text-align: center;
+    line-height: 1.25em;
+    font-size: 10vw;
 
     @include large-screen {
-      font-size: 6vw;
+      font-size: 95px;
     }
   }
 }
 
 #scroll-to-content {
-  border: none;
-  box-shadow: none;
-  padding: 0;
-
   $scroll-to-content-size: 60px;
 
   width: $scroll-to-content-size;
@@ -29,7 +32,6 @@
   bottom: $spacer-unit-size;
   left: 50%;
   margin-left: -$scroll-to-content-size/2;
-
 
   $down-arrow-button-image-location-x: 0;
   $down-arrow-button-image-location-y: 0;

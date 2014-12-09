@@ -36,7 +36,21 @@
                     echo $opening_wrapper_tag . get_bloginfo( 'name' ) . $closing_wrapper_tag;
                 ?>
             </a>
+            <button class="styleless">Menu</button>
 		</div><!-- .site-branding -->
 	</header><!-- #masthead -->
+
+    <nav id="header-menu">
+        <!-- Pages -->
+        <?php wp_nav_menu(
+            array(
+                'theme_location' => 'primary',
+                'walker' => new Walker_Header_Menu_Page_Menu(),
+                'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>'
+            )
+        ); ?>
+
+        <!-- Posts -->
+    </nav>
 
 	<div id="content" class="site-content">

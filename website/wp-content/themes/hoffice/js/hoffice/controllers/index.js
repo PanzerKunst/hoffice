@@ -10,7 +10,7 @@ CBR.Controllers.Index = P(CBR.Controllers.Base, function (c, base) {
     c._initElements = function () {
         base.initElements();
 
-        this.$mainMenuSpanContainers = $("#menu-main-menu").find("a").children("div");
+        this.$mainMenuSpanContainers = $("#index-menu-pages").find("a").children("div");
         this.$videoArticles = $("article.format-video");
         this.$videoIframes = this.$videoArticles.find("iframe");
     };

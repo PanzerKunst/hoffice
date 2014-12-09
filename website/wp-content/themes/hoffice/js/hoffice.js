@@ -87,16 +87,31 @@ CBR.Controllers = CBR.Controllers || {};
     };
 
     c.initElements = function () {
+        this.$html = $("html");
+        this.$headerMenu = $("#header-menu");
+
         $("#content-header").height(window.innerHeight);
         $("#page").show();
     };
 
     c.initEvents = function () {
+        $(".site-branding").children("button").click($.proxy(this._toggleHeaderMenu, this));
+
         $("#scroll-to-content").click(function(e) {
             var scrollYPos = $(".hoffice-page-content").offset().top;
             e.preventDefault();
             TweenLite.to(window, 0.3, {scrollTo: scrollYPos, ease:Power1.easeIn});
         });
+    };
+
+    c._toggleHeaderMenu = function() {
+        if(this.$headerMenu.is(":visible")) {
+            this.$headerMenu.hide();
+            this.$html.css("overflow", "visible");
+        } else {
+            this.$headerMenu.show();
+            this.$html.css("overflow", "hidden");
+        }
     };
 });;CBR.Controllers.Index = P(CBR.Controllers.Base, function (c, base) {
     c.run = function () {
@@ -110,7 +125,7 @@ CBR.Controllers = CBR.Controllers || {};
     c._initElements = function () {
         base.initElements();
 
-        this.$mainMenuSpanContainers = $("#menu-main-menu").find("a").children("div");
+        this.$mainMenuSpanContainers = $("#index-menu-pages").find("a").children("div");
         this.$videoArticles = $("article.format-video");
         this.$videoIframes = this.$videoArticles.find("iframe");
     };
