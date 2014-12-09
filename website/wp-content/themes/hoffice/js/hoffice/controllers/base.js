@@ -1,10 +1,15 @@
 CBR.Controllers.Base = P(function (c) {
+    c.scrollTimer = null;
+    c.headerBarOpacityDefault = 0.5;
+    c.headerBarOpacityScrolledDown = 1;
+
     c.init = function (options) {
         this.options = options;
     };
 
     c.initElements = function () {
         this.$html = $("html");
+        this.$headerBar = $(".site-branding");
         this.$headerMenu = $("#header-menu");
 
         $("#content-header").height(window.innerHeight);
@@ -12,17 +17,43 @@ CBR.Controllers.Base = P(function (c) {
     };
 
     c.initEvents = function () {
-        $(".site-branding").children("button").click($.proxy(this._toggleHeaderMenu, this));
+        $(window).scroll(_.debounce($.proxy(this._toggleHeaderBarOpacity, this), 15));
 
-        $("#scroll-to-content").click(function(e) {
-            var scrollYPos = $(".hoffice-page-content").offset().top;
+        this.$headerBar.children("button").click($.proxy(this._toggleHeaderMenu, this));
+
+        var headerBarHeight = this.$headerBar.height();
+
+        $("#scroll-to-content").click(function (e) {
             e.preventDefault();
-            TweenLite.to(window, 0.3, {scrollTo: scrollYPos, ease:Power1.easeIn});
+
+            var contentYPos = $(".hoffice-page-content").offset().top;
+            var scrollYPos = contentYPos - headerBarHeight;
+            TweenLite.to(window, 0.3, {scrollTo: scrollYPos, ease: Power1.easeIn});
         });
     };
 
-    c._toggleHeaderMenu = function() {
-        if(this.$headerMenu.is(":visible")) {
+    c._toggleHeaderBarOpacity = function (e, opacity) {
+        this._listenForScrollEnd(e);
+        var opacty = opacity ? opacity : this.headerBarOpacityScrolledDown;
+        TweenLite.to(this.$headerBar, 0.5, {backgroundColor: "rgba(0, 0, 0, " + opacty + ")"});
+    };
+
+    c._listenForScrollEnd = function (e) {
+        // This will start a timeout and wait 150ms. If a new scroll event occurred in the meantime, the timer is aborted
+        // and a new one is created. If not, the function will be executed.
+        if (this.scrollTimer !== null) {
+            clearTimeout(this.scrollTimer);
+        }
+        this.scrollTimer = setTimeout(function () {
+            if (window.pageYOffset === 0) {
+                this._toggleHeaderBarOpacity(e, this.headerBarOpacityDefault);
+            }
+            clearTimeout(this.scrollTimer);
+        }.bind(this), 150);
+    };
+
+    c._toggleHeaderMenu = function (e) {
+        if (this.$headerMenu.is(":visible")) {
             this.$headerMenu.hide();
             this.$html.removeClass("header-menu-open");
         } else {

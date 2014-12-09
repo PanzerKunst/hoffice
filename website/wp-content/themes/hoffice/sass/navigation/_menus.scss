@@ -1,19 +1,19 @@
-$header-bar-height: 44px;
-$header-bar-height-large-screen: 73px;
+$header-bar-height: 38px;
+$header-bar-height-large-screen: 59px;
 
 .main-navigation {
   clear: both;
+}
+
+ul.menu {
+  list-style-type: none;
+  margin: 0;
 }
 
 .index-menu-pages-container {
   text-align: center;
 
   background-color: #F0F0F0;
-}
-
-ul.menu {
-  list-style-type: none;
-  margin: 0;
 }
 
 #index-menu-pages {
@@ -193,13 +193,13 @@ ul.menu {
     // For margin declarations to work
     display: inline-block;
 
-    margin: $spacer-unit-size/2 0 0 $spacer-unit-size;
+    margin: $spacer-unit-size/4 0 0 $spacer-unit-size;
 
     @include large-screen {
-      margin: $spacer-unit-size 0 0 $spacer-unit-size*2;
+      margin: $spacer-unit-size/2 0 0 $spacer-unit-size*2;
     }
 
-    $home-menu-font-size: 20px;
+    $home-menu-font-size: $font__size-body-large-screen;
 
     font-size: $home-menu-font-size;
 
@@ -209,7 +209,7 @@ ul.menu {
     }
 
     @include large-screen {
-      $home-menu-font-size: 30px;
+      $home-menu-font-size: $font__size-h2;
       font-size: $home-menu-font-size;
       > h1 {
         font-size: $home-menu-font-size;
@@ -231,9 +231,9 @@ ul.menu {
 #header-menu {
   position: fixed;
   top: 0;
-  bottom: 0;
   left: 0;
   width: 100%;
+  min-height: 100%;
   z-index: $z-index-header-menu;
 
   padding-top: $header-bar-height;
@@ -242,14 +242,43 @@ ul.menu {
   }
 
   background-color: black;
-
-  min-height: 100%;
-
   overflow: auto;
 
   display: none;
 
-  .menu-item {
-    text-align: center;
+  text-align: center;
+
+  > section {
+    margin-top: $default-spacer-size;
+
+    @include large-screen {
+      margin-top: $default-spacer-size-large-screen;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  span {
+    text-transform: uppercase;
+    color: $color__text-input;
+    font-weight: bold;
+
+    $header-menu-adaptive-font-size: 3;
+    font-size: #{$header-menu-adaptive-font-size}vw;
+    @include large-screen {
+      font-size: #{$header-menu-adaptive-font-size * $font__adaptive-ratio-between-vw-and-px}px;
+    }
+  }
+
+  a {
+    color: white;
+
+    $header-menu-adaptive-font-size: 5;
+    font-size: #{$header-menu-adaptive-font-size}vw;
+    @include large-screen {
+      font-size: #{$header-menu-adaptive-font-size * $font__adaptive-ratio-between-vw-and-px}px;
+    }
   }
 }

@@ -1,3 +1,32 @@
 h1, h2, h3, h4, h5, h6 {
   clear: both;
 }
+
+h1 {
+  font-size: ($font__size-h2 + $font__size-h3) / 2; // $font-size-h2 is a bit too big on small screen
+  @include large-screen {
+    font-size: $font__size-h1;
+  }
+
+  text-align: center;
+}
+
+h2 {
+  font-size: $font__size-h3;
+  @include large-screen {
+    font-size: $font__size-h2;
+  }
+
+  margin-bottom: 0.5em;
+}
+
+h3 {
+  font-size: $font__size-h4;
+  @include large-screen {
+    font-size: $font__size-h3;
+  }
+}
+
+h4 {
+  font-size: $font__size-h4;
+}

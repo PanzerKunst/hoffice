@@ -17,7 +17,6 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
             <div id="content-header">
-                <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
                 <button id="scroll-to-content" class="styleless"></button>
             </div>
 

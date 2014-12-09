@@ -38,6 +38,8 @@ html.header-menu-open {
   padding-top: $default-spacer-size;
 
   @include large-screen {
+    padding-top: $default-spacer-size-large-screen;
+
     div, span, applet, object, iframe,
     p, blockquote, pre,
     a, abbr, acronym, address, big, cite, code,
@@ -46,7 +48,7 @@ html.header-menu-open {
     dl, dt, dd, ol, ul, li,
     fieldset, form, label, legend,
     table, caption, tbody, tfoot, thead, tr, th, td {
-      font-size: 20px;
+      font-size: $font__size-body-large-screen;
       line-height: $default-line-height;
     }
   }
@@ -54,4 +56,8 @@ html.header-menu-open {
 
 .site-content {
   padding-bottom: $default-spacer-size;
+
+  @include large-screen {
+    padding-bottom: $default-spacer-size-large-screen;
+  }
 }

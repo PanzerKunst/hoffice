@@ -12,12 +12,12 @@
     font-family: $font__h1;
     color: white;
 
-    text-align: center;
     line-height: 1.25em;
-    font-size: 10vw;
 
+    $entry-title-adaptive-font-size: 10;
+    font-size: #{$entry-title-adaptive-font-size}vw;
     @include large-screen {
-      font-size: 95px;
+      font-size: #{$entry-title-adaptive-font-size * $font__adaptive-ratio-between-vw-and-px}px;
     }
   }
 }

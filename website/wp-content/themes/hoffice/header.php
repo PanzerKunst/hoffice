@@ -42,15 +42,21 @@
 
     <nav id="header-menu">
         <!-- Pages -->
-        <?php wp_nav_menu(
-            array(
-                'theme_location' => 'primary',
-                'walker' => new Walker_Header_Menu_Page_Menu(),
-                'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>'
-            )
-        ); ?>
+        <section id="header-menu-pages">
+            <span>Pages</span>
+            <?php wp_nav_menu(
+                array(
+                    'theme_location' => 'primary',
+                    'walker' => new Walker_Header_Menu_Page_Menu(),
+                    'container' => null
+                )
+            ); ?>
+        </section>
 
         <!-- Posts -->
+        <section id="header-menu-posts">
+            <span>Blog posts</span>
+        </section>
     </nav>
 
 	<div id="content" class="site-content">
