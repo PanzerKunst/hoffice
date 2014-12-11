@@ -1,9 +1,81 @@
 body.home {
-  #content {
-    background-color: $color__post-thumbnails;
+  .site-content {
+    padding-bottom: 0;
   }
 }
 
 #content-header {
   @include background-image(linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("images/index-header.jpg"));
+}
+
+.index-menu-pages-container {
+  text-align: center;
+
+  // TODO
+  background-color: white;
+}
+
+#index-menu-pages {
+  display: inline;
+
+  > .menu-item {
+    display: inline-block;
+    vertical-align: bottom;
+
+    margin: 0 $spacer-unit-size 4*$spacer-unit-size $spacer-unit-size;
+
+    max-width: $min-content-width - 2 * $spacer-unit-size;
+  }
+
+  a {
+    display: block;
+
+    color: $color__text-main;
+    text-decoration: none;
+
+    > div {
+      min-height: 84px; // Enough for 2 lines of text
+
+      // TODO
+      background-color: #F0F0F0;
+
+      @include transition-all-attributes;
+    }
+
+    &:hover {
+      .overlay-for-hover {
+        opacity: 0.2;
+      }
+
+      > div {
+        background-color: $color__action;
+        color: white;
+      }
+    }
+  }
+
+  figure {
+    position: relative;
+
+    > .overlay-for-hover {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      background-color: black;
+      opacity: 0;
+
+      @include transition-all-attributes;
+    }
+
+    img {
+      display: block;
+    }
+  }
+
+  h2 {
+    font-size: $font__size-body-large-screen;
+  }
 }

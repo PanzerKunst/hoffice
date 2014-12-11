@@ -53,12 +53,27 @@ CBR.Controllers.Base = P(function (c) {
     };
 
     c._toggleHeaderMenu = function (e) {
-        if (this.$headerMenu.is(":visible")) {
-            this.$headerMenu.hide();
-            this.$html.removeClass("header-menu-open");
-        } else {
+        if (!this.$headerMenu.is(":visible")) {
             this.$headerMenu.show();
             this.$html.addClass("header-menu-open");
+            this._addScrollbarWidthMargin();
+            this.$headerBar.css("background-color", "black");
+
+        } else {
+            this.$headerMenu.hide();
+            this.$html.removeClass("header-menu-open");
+            this._removeScrollbarWidthMargin();
         }
+    };
+
+    c._addScrollbarWidthMargin = function() {
+        var scrollbarWidth = CBR.Services.Browser.ScrollbarWidth.get();
+        this.$headerBar.css("margin-right", scrollbarWidth);
+        this.$headerMenu.css("margin-right", scrollbarWidth);
+    };
+
+    c._removeScrollbarWidthMargin = function() {
+        this.$headerBar.css("margin-right", 0);
+        this.$headerMenu.css("margin-right", 0);
     };
 });

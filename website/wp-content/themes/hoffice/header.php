@@ -36,14 +36,14 @@
                     echo $opening_wrapper_tag . get_bloginfo( 'name' ) . $closing_wrapper_tag;
                 ?>
             </a>
-            <button class="styleless">Menu</button>
+            <button class="styleless"></button>
 		</div><!-- .site-branding -->
 	</header><!-- #masthead -->
 
     <nav id="header-menu">
         <!-- Pages -->
         <section id="header-menu-pages">
-            <span>Pages</span>
+            <h2>Pages</h2>
             <?php wp_nav_menu(
                 array(
                     'theme_location' => 'primary',
@@ -54,8 +54,15 @@
         </section>
 
         <!-- Posts -->
+
         <section id="header-menu-posts">
-            <span>Blog posts</span>
+            <h2>Blog posts</h2>
+            <ul class="menu">
+                <?php foreach(get_posts() as $post) {
+                    insertPostMenuItem($post);
+                }
+                ?>
+            </ul>
         </section>
     </nav>
 

@@ -9,8 +9,7 @@
     top: 50%;
     @include transform(translateY(-50%));
 
-    font-family: $font__h1;
-    color: white;
+    @include heading-style-h1;
 
     line-height: 1.25em;
 

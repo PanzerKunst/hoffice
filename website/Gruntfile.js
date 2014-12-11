@@ -49,6 +49,7 @@ module.exports = function (grunt) {
                     // Common
 
                     // Services
+                    "wp-content/themes/hoffice/js/hoffice/services/browser.js",
 
                     // Models
 

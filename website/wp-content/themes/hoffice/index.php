@@ -25,8 +25,8 @@ get_header(); ?>
                     'theme_location' => 'primary',
                     'walker' => new Walker_Index_Page_Menu(),
                     'menu_id' => 'index-menu-pages',
-                    'link_before' => '<div><p>',
-                    'link_after' => '</p></div>',
+                    'link_before' => '<div><h2>',
+                    'link_after' => '</h2></div>',
                     'container_class' => 'index-menu-pages-container hoffice-page-content',
                     'items_wrap' => '<ul id="%1$s" class="%2$s"><!--%3$s--></ul>'
                 )

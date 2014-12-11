@@ -81,6 +81,46 @@ var CBR = CBR || {};
 
 // create additional namespace
 CBR.Controllers = CBR.Controllers || {};
+CBR.Services = CBR.Services || {};
+;CBR.Services.Browser = {
+    scrollbarWidth: (function () {
+        var _scrollbarWidth = null;
+
+        function _getScrollarWidth() {
+            var outer = document.createElement("div");
+            outer.style.visibility = "hidden";
+            outer.style.width = "100px";
+            outer.style.msOverflowStyle = "scrollbar"; // needed for WinJS apps
+
+            document.body.appendChild(outer);
+
+            var widthNoScroll = outer.offsetWidth;
+            // force scrollbars
+            outer.style.overflow = "scroll";
+
+            // add innerdiv
+            var inner = document.createElement("div");
+            inner.style.width = "100%";
+            outer.appendChild(inner);
+
+            var widthWithScroll = inner.offsetWidth;
+
+            // remove divs
+            outer.parentNode.removeChild(outer);
+
+            return widthNoScroll - widthWithScroll;
+        }
+
+        return {
+            get: function () {
+                if (_scrollbarWidth === null) {
+                    _scrollbarWidth = _getScrollarWidth();
+                }
+                return _scrollbarWidth;
+            }
+        }
+    })()
+};
 ;CBR.Controllers.Base = P(function (c) {
     c.scrollTimer = null;
     c.headerBarOpacityDefault = 0.5;
@@ -136,13 +176,28 @@ CBR.Controllers = CBR.Controllers || {};
     };
 
     c._toggleHeaderMenu = function (e) {
-        if (this.$headerMenu.is(":visible")) {
-            this.$headerMenu.hide();
-            this.$html.removeClass("header-menu-open");
-        } else {
+        if (!this.$headerMenu.is(":visible")) {
             this.$headerMenu.show();
             this.$html.addClass("header-menu-open");
+            this._addScrollbarWidthMargin();
+            this.$headerBar.css("background-color", "black");
+
+        } else {
+            this.$headerMenu.hide();
+            this.$html.removeClass("header-menu-open");
+            this._removeScrollbarWidthMargin();
         }
+    };
+
+    c._addScrollbarWidthMargin = function() {
+        var scrollbarWidth = CBR.Services.Browser.scrollbarWidth.get();
+        this.$headerBar.css("margin-right", scrollbarWidth);
+        this.$headerMenu.css("margin-right", scrollbarWidth);
+    };
+
+    c._removeScrollbarWidthMargin = function() {
+        this.$headerBar.css("margin-right", 0);
+        this.$headerMenu.css("margin-right", 0);
     };
 });
 ;CBR.Controllers.Index = P(CBR.Controllers.Base, function (c, base) {

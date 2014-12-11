@@ -56,7 +56,6 @@ html.header-menu-open {
 
 .site-content {
   padding-bottom: $default-spacer-size;
-
   @include large-screen {
     padding-bottom: $default-spacer-size-large-screen;
   }
