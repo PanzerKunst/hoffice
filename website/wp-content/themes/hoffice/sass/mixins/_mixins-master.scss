@@ -56,6 +56,5 @@
 
 @mixin heading-style-h1 {
   font-family: $font__headings;
-  color: white;
-  opacity: $default-opacity;
+  color: $color__background-hr;
 }

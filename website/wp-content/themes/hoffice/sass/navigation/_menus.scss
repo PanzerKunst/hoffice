@@ -1,5 +1,8 @@
 $header-bar-height: 40px;
 $header-bar-height-large-screen: 59px;
+$menu-button-image-location-x-white: -100px;
+$menu-button-image-location-x-black: -200px;
+$cross-button-image-location-x-white: -300px;
 
 .main-navigation {
   clear: both;
@@ -57,10 +60,182 @@ ul.menu {
   z-index: $z-index-menu-bar;
 }
 
+.site-branding {
+  background-color: rgba(37, 37, 37, 0.7); // $color__dark-background @0.7
+
+  @include transition(background-color 0.5s);
+
+  height: $header-bar-height;
+  @include large-screen {
+    height: $header-bar-height-large-screen;
+  }
+
+  &.header-menu-open {
+    background-color: $color__dark-background !important;
+
+    > a {
+      color: $color__background-hr !important;
+    }
+
+    > button {
+      $menu-button-image-location-x: $cross-button-image-location-x-white;
+      $menu-button-image-location-y: 0;
+
+      background-position: $menu-button-image-location-x $menu-button-image-location-y !important;
+
+      @include hidpi {
+        background-position: half-pos($menu-button-image-location-x, $menu-button-image-location-y) !important;
+      }
+    }
+  }
+
+  @include clearfix;
+
+  > a {
+    float: left;
+
+    @include heading-style-h1;
+
+    text-decoration: none;
+
+    // For margin declarations to work
+    display: inline-block;
+
+    margin: ceil($spacer-unit-size/4) 0 0 $spacer-unit-size;
+
+    @include large-screen {
+      margin: 5px 0 0 25px;
+    }
+
+    $home-menu-font-size: $font__size-body-large-screen;
+
+    font-size: $home-menu-font-size;
+
+    // On index page, the text is wrapped in <h1>
+    > h1 {
+      font-size: $home-menu-font-size;
+    }
+
+    @include large-screen {
+      $home-menu-font-size: $font__size-h2;
+      font-size: $home-menu-font-size;
+      > h1 {
+        font-size: $home-menu-font-size;
+      }
+    }
+  }
+
+  > button {
+    float: right;
+
+    margin: 0 9px 0 0;
+
+    @include large-screen {
+      margin: 9px 20px 0 0;
+    }
+
+    $menu-button-image-location-x: $menu-button-image-location-x-white;
+    $menu-button-image-location-y: 0;
+
+    background: transparent url($sprite-url) repeat-x scroll $menu-button-image-location-x $menu-button-image-location-y;
+
+    @include hdpi-sprite;
+
+    @include hidpi {
+      background-position: half-pos($menu-button-image-location-x, $menu-button-image-location-y);
+    }
+
+    width: 40px;
+    height: 40px;
+
+
+    $menu-button-image-location-x: $menu-button-image-location-x-white;
+    $menu-button-image-location-y: 0;
+
+    background-position: $menu-button-image-location-x $menu-button-image-location-y;
+
+    @include hidpi {
+      background-position: half-pos($menu-button-image-location-x, $menu-button-image-location-y);
+    }
+  }
+}
+
+html.scrolled-down {
+  .site-branding {
+    background-color: rgba(245, 245, 245, 0.9); // $color__background-body @0.9
+
+    > a {
+      color: $color__text-input;
+    }
+
+    > button {
+      $menu-button-image-location-x: $menu-button-image-location-x-black;
+      $menu-button-image-location-y: 0;
+
+      background-position: $menu-button-image-location-x $menu-button-image-location-y;
+
+      @include hidpi {
+        background-position: half-pos($menu-button-image-location-x, $menu-button-image-location-y);
+      }
+    }
+  }
+}
+
+#header-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+
+  padding-top: $header-bar-height;
+  @include large-screen {
+    padding-top: $header-bar-height-large-screen;
+  }
+
+  background-color: $color__dark-background;
+
+  text-align: center;
+
+  > section {
+    opacity: 0;
+
+    margin-top: $default-spacer-size;
+    @include large-screen {
+      margin-top: $default-spacer-size-large-screen;
+    }
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  h2 {
+    text-transform: uppercase;
+    color: $color__text-input;
+
+    $header-menu-adaptive-font-size: 3;
+    font-size: #{$header-menu-adaptive-font-size}vw;
+    @include large-screen {
+      font-size: #{$header-menu-adaptive-font-size * $font__adaptive-ratio-between-vw-and-px}px;
+    }
+  }
+
+  a {
+    color: $color__background-body;
+
+    $header-menu-adaptive-font-size: 5;
+    font-size: #{$header-menu-adaptive-font-size}vw;
+    @include large-screen {
+      font-size: #{$header-menu-adaptive-font-size * $font__adaptive-ratio-between-vw-and-px}px;
+    }
+  }
+}
+
 #post-thumbnails {
   text-align: center;
   background-color: $color__post-thumbnails;
-  color: white;
+  color: $color__background-body;
 
   padding-bottom: $default-spacer-size;
   @include large-screen {
@@ -98,7 +273,7 @@ ul.menu {
   }
 
   a {
-    color: white;
+    color: $color__background-body;
   }
 
   .entry-footer {
@@ -107,141 +282,6 @@ ul.menu {
 }
 
 #colophon {
-  background-color: #252525;
-  color: white;
-}
-
-.site-branding {
-  background-color: rgba(0, 0, 0, 0.5);
-
-  height: $header-bar-height;
-  @include large-screen {
-    height: $header-bar-height-large-screen;
-  }
-
-  @include clearfix;
-
-  > a {
-    float: left;
-
-    @include heading-style-h1;
-    &:hover,
-    &:focus,
-    &:active {
-      opacity: 1;
-    }
-
-    text-decoration: none;
-
-    // For margin declarations to work
-    display: inline-block;
-
-    margin: $spacer-unit-size/4 0 0 $spacer-unit-size;
-
-    @include large-screen {
-      margin: $spacer-unit-size/2 0 0 $spacer-unit-size*2;
-    }
-
-    $home-menu-font-size: $font__size-body-large-screen;
-
-    font-size: $home-menu-font-size;
-
-    // On index page, the text is wrapped in <h1>
-    > h1 {
-      font-size: $home-menu-font-size;
-    }
-
-    @include large-screen {
-      $home-menu-font-size: $font__size-h2;
-      font-size: $home-menu-font-size;
-      > h1 {
-        font-size: $home-menu-font-size;
-      }
-    }
-  }
-
-  > button {
-    float: right;
-
-    margin: 0 $spacer-unit-size 0 0;
-
-    @include large-screen {
-      margin: 9px $spacer-unit-size*2 0 0;
-    }
-
-    $menu-button-image-location-x: -200px;
-    $menu-button-image-location-y: 0;
-
-    background: transparent url($sprite-url) repeat-x scroll $menu-button-image-location-x $menu-button-image-location-y;
-
-    @include hdpi-sprite;
-
-    @include hidpi {
-      background-position: half-pos($menu-button-image-location-x, $menu-button-image-location-y);
-    }
-
-    width: 40px;
-    height: 40px;
-
-    opacity: $default-opacity;
-    &:hover,
-    &:active {
-      opacity: 1;
-    }
-  }
-}
-
-#header-menu {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: $z-index-header-menu;
-
-  padding-top: $header-bar-height;
-  @include large-screen {
-    padding-top: $header-bar-height-large-screen;
-  }
-
-  background-color: black;
-  overflow: auto;
-
-  display: none;
-
-  text-align: center;
-
-  > section {
-    margin-top: $default-spacer-size;
-
-    @include large-screen {
-      margin-top: $default-spacer-size-large-screen;
-    }
-
-    &:first-child {
-      margin-top: 0;
-    }
-  }
-
-  h2 {
-    text-transform: uppercase;
-    color: $color__text-input;
-    font-weight: bold;
-
-    $header-menu-adaptive-font-size: 3;
-    font-size: #{$header-menu-adaptive-font-size}vw;
-    @include large-screen {
-      font-size: #{$header-menu-adaptive-font-size * $font__adaptive-ratio-between-vw-and-px}px;
-    }
-  }
-
-  a {
-    color: white;
-
-    $header-menu-adaptive-font-size: 5;
-    font-size: #{$header-menu-adaptive-font-size}vw;
-    @include large-screen {
-      font-size: #{$header-menu-adaptive-font-size * $font__adaptive-ratio-between-vw-and-px}px;
-    }
-  }
+  background-color: $color__dark-background;
+  color: $color__background-body;
 }

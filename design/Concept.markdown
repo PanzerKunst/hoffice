@@ -30,3 +30,4 @@ Same footer as on the index page.
 # Websites for inspiration
 
 [www.rezo-zero.com/en](http://www.rezo-zero.com/en)
+[www.wework.com](http://www.wework.com)

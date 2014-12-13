@@ -3,14 +3,14 @@ CBR.Controllers.Index = P(CBR.Controllers.Base, function (c, base) {
         this._initElements();
         this._initEvents();
 
-        this._verticallyCenterTextInMainMenu();
+        setTimeout($.proxy(this._verticallyCenterTextInMainMenu, this), 400);   // We need to wait a split second for the styling to be applied, before calculating heights
         this._resizeAndShowVideos();
     };
 
     c._initElements = function () {
         base.initElements();
 
-        this.$mainMenuSpanContainers = $("#index-menu-pages").find("a").children("div");
+        this.$mainMenuH2Containers = $("#index-menu-pages").find("aside");
         this.$videoArticles = $("article.format-video");
         this.$videoIframes = this.$videoArticles.find("iframe");
     };
@@ -20,11 +20,11 @@ CBR.Controllers.Index = P(CBR.Controllers.Base, function (c, base) {
     };
 
     c._verticallyCenterTextInMainMenu = function() {
-        this.$mainMenuSpanContainers.each(function (index, element) {
-            var $div = $(element);
-            var $span = $div.children();
-            var paddingHeight = ($div.height() - $span.height()) / 2;
-            $span.css("padding-top", paddingHeight);
+        this.$mainMenuH2Containers.each(function (index, element) {
+            var $aside = $(element);
+            var $h2 = $aside.children("h2");
+            var paddingHeight = ($aside.height() - $h2.height()) / 2;
+            $h2.css("padding-top", paddingHeight);
         });
     };
 

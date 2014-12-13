@@ -10,46 +10,67 @@ body.home {
 
 .index-menu-pages-container {
   text-align: center;
-
-  // TODO
-  background-color: white;
 }
 
 #index-menu-pages {
-  display: inline;
+  display: inline-block;
+
+  $menu-width-large-screen-percent: 75;
+
+  @media screen and (min-width: $max-content-width * 100 / $menu-width-large-screen-percent) {
+    width: percentage($menu-width-large-screen-percent / 100);
+
+    > .menu-item {
+      width: (100% / 3);
+    }
+  }
 
   > .menu-item {
     display: inline-block;
+
     vertical-align: bottom;
 
-    margin: 0 $spacer-unit-size 4*$spacer-unit-size $spacer-unit-size;
+    padding: 0 $spacer-unit-size;
+    margin-bottom: 4*$spacer-unit-size;
 
     max-width: $min-content-width - 2 * $spacer-unit-size;
+    @media screen and (min-width: $max-content-width * 100 / $menu-width-large-screen-percent) {
+      max-width: none;
+    }
   }
 
   a {
     display: block;
 
-    color: $color__text-main;
+    color: $color__text-input;
     text-decoration: none;
 
-    > div {
+    > aside {
       min-height: 84px; // Enough for 2 lines of text
 
-      // TODO
-      background-color: #F0F0F0;
+      background-color: #fff;
+    }
+
+    .overlay-for-hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
 
       @include transition-all-attributes;
     }
 
     &:hover {
-      .overlay-for-hover {
+      figure > .overlay-for-hover {
         opacity: 0.2;
       }
+      aside > .overlay-for-hover {
+        height: 100%;
+      }
 
-      > div {
-        background-color: $color__action;
-        color: white;
+      h2 {
+        color: $color__background-body;
       }
     }
   }
@@ -58,24 +79,29 @@ body.home {
     position: relative;
 
     > .overlay-for-hover {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-
-      background-color: black;
+      background-color: $color__dark-background;
       opacity: 0;
-
-      @include transition-all-attributes;
     }
+  }
 
-    img {
-      display: block;
+  img {
+    display: block;
+  }
+
+  aside {
+    position: relative;
+
+    > .overlay-for-hover {
+      background-color: $color__action;
+      height: 0;
     }
   }
 
   h2 {
     font-size: $font__size-body-large-screen;
+    padding: 0 $spacer-unit-size;
+
+    position: relative; // For z-index to be taken into account
+    z-index: 1; // More than the overlay
   }
 }

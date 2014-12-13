@@ -30,6 +30,9 @@ html.header-menu-open {
 }
 
 #page {
+  background-color: $color__background-body;
+
+  // Will be displayed after heading, in JavaScript
   display: none;
 }
 

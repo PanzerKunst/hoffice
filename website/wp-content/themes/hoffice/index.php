@@ -16,17 +16,15 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-            <div id="content-header">
-                <button id="scroll-to-content" class="styleless"></button>
-            </div>
+            <div id="content-header"></div>
 
             <?php wp_nav_menu(
                 array(
                     'theme_location' => 'primary',
                     'walker' => new Walker_Index_Page_Menu(),
                     'menu_id' => 'index-menu-pages',
-                    'link_before' => '<div><h2>',
-                    'link_after' => '</h2></div>',
+                    'link_before' => '<aside><h2>',
+                    'link_after' => '</h2><div class="overlay-for-hover"></div></aside>',
                     'container_class' => 'index-menu-pages-container hoffice-page-content',
                     'items_wrap' => '<ul id="%1$s" class="%2$s"><!--%3$s--></ul>'
                 )
