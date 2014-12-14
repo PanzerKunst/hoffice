@@ -16,7 +16,10 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-            <div id="content-header"></div>
+            <div id="content-header">
+                <h1 class="entry-title"><?php bloginfo( 'description' ); ?></h1>
+                <a href="#" class="btn call-to-action">Yes!</a>
+            </div>
 
             <?php wp_nav_menu(
                 array(
@@ -24,15 +27,15 @@ get_header(); ?>
                     'walker' => new Walker_Index_Page_Menu(),
                     'menu_id' => 'index-menu-pages',
                     'link_before' => '<aside><h2>',
-                    'link_after' => '</h2><div class="overlay-for-hover"></div></aside>',
-                    'container_class' => 'index-menu-pages-container hoffice-page-content',
+                    'link_after' => '</h2><div class="menu-item-overlay"></div></aside>',
+                    'container_class' => 'index-menu-container hoffice-page-content',
                     'items_wrap' => '<ul id="%1$s" class="%2$s"><!--%3$s--></ul>'
                 )
             ); ?>
 
             <?php if ( have_posts() ) : ?>
 
-                <section id="post-thumbnails"><div><!--
+                <div class="index-menu-container posts"><ul id="index-menu-posts" class="menu"><!--
 
                 <?php /* Start the Loop */ ?>
                 <?php while ( have_posts() ) : the_post(); ?>
@@ -47,7 +50,7 @@ get_header(); ?>
 
                 <?php endwhile; ?>
 
-             --></div></section>
+             --></ul></div>
 
             <?php else : ?>
 

@@ -4,7 +4,7 @@
  */
 ?>
 
---><article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+--><li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <div class="entry-content">
         <?php the_content(); ?>
         <?php
@@ -26,4 +26,4 @@
 	<footer class="entry-footer">
 		<?php hoffice_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
-</article><!-- #post-## --><!--
+</li><!-- #post-## --><!--

@@ -5,70 +5,81 @@ body.home {
 }
 
 #content-header {
-  @include background-image(linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("images/index-header.jpg"));
+  @include background-image(linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("images/index-header.jpg"));
 }
 
-.index-menu-pages-container {
+.index-menu-container {
   text-align: center;
+
+  > ul {
+    display: inline-block;
+
+    $menu-width-large-screen-percent: 75;
+
+    @media screen and (min-width: $max-content-width * 100 / $menu-width-large-screen-percent) {
+      width: percentage($menu-width-large-screen-percent / 100);
+    }
+
+    > li {
+      display: inline-block;
+      vertical-align: bottom;
+
+      padding: 0 $spacer-unit-size; // We use padding instead of margin because we need to include it in the width: 33%
+      margin-bottom: 4*$spacer-unit-size;
+
+      max-width: $min-content-width;
+      @media screen and (min-width: $max-content-width * 100 / $menu-width-large-screen-percent) {
+        max-width: none;
+        width: (100% / 3);
+      }
+    }
+  }
+
+  aside,
+  .entry-header {
+    min-height: 70px; // Enough for 2 lines of text
+  }
+
+  // To avoid weird bottom space in the container
+  img {
+    display: block;
+  }
+
+  .menu-item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    @include transition-all-attributes;
+  }
+
+  h2 {
+    font-size: $font__size-body-large-screen;
+    padding: 0 $spacer-unit-size;
+
+    position: relative; // For z-index to be taken into account
+    z-index: 1; // More than the overlay
+
+    @include transition-all-attributes;
+  }
 }
 
 #index-menu-pages {
-  display: inline-block;
-
-  $menu-width-large-screen-percent: 75;
-
-  @media screen and (min-width: $max-content-width * 100 / $menu-width-large-screen-percent) {
-    width: percentage($menu-width-large-screen-percent / 100);
-
-    > .menu-item {
-      width: (100% / 3);
-    }
-  }
-
-  > .menu-item {
-    display: inline-block;
-
-    vertical-align: bottom;
-
-    padding: 0 $spacer-unit-size;
-    margin-bottom: 4*$spacer-unit-size;
-
-    max-width: $min-content-width - 2 * $spacer-unit-size;
-    @media screen and (min-width: $max-content-width * 100 / $menu-width-large-screen-percent) {
-      max-width: none;
-    }
-  }
-
   a {
     display: block;
 
     color: $color__text-input;
     text-decoration: none;
 
-    > aside {
-      min-height: 84px; // Enough for 2 lines of text
-
-      background-color: #fff;
-    }
-
-    .overlay-for-hover {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-
-      @include transition-all-attributes;
-    }
-
     &:hover {
-      figure > .overlay-for-hover {
-        opacity: 0.2;
+      figure > .menu-item-overlay {
+        opacity: 0.1;
       }
-      aside > .overlay-for-hover {
+      aside > .menu-item-overlay {
         height: 100%;
       }
-
       h2 {
         color: $color__background-body;
       }
@@ -78,30 +89,61 @@ body.home {
   figure {
     position: relative;
 
-    > .overlay-for-hover {
+    > .menu-item-overlay {
       background-color: $color__dark-background;
       opacity: 0;
     }
   }
 
-  img {
-    display: block;
-  }
-
   aside {
     position: relative;
 
-    > .overlay-for-hover {
+    > .menu-item-overlay {
       background-color: $color__action;
       height: 0;
     }
   }
+}
 
-  h2 {
-    font-size: $font__size-body-large-screen;
-    padding: 0 $spacer-unit-size;
+.index-menu-container.posts {
+  background-color: $color__action;
+  padding-top: $default-spacer-size-large-screen;
+}
 
-    position: relative; // For z-index to be taken into account
-    z-index: 1; // More than the overlay
+#index-menu-posts {
+  li {
+    &.format-standard,
+    &.format-aside,
+    &.format-quote {
+      > .entry-content > * {
+        display: none;
+      }
+    }
+
+    // Hidden before set to correct size in JS
+    &.format-video {
+      display: none;
+
+      a {
+        position: relative;
+      }
+    }
+  }
+
+  .entry-content {
+    padding: 0;
+  }
+
+  h2,
+  a {
+    color: $color__background-body;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .entry-footer {
+    display: none;
   }
 }

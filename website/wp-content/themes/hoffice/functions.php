@@ -122,6 +122,7 @@ function hoffice_scripts()
     wp_enqueue_script('hoffice-libs-gsap-css-plugin', 'http://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.0/plugins/CSSPlugin.min.js', array(), false, true);
     wp_enqueue_script('hoffice-libs-gsap-scroll-to-plugin', 'http://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.0/plugins/ScrollToPlugin.min.js', array(), false, true);
     wp_enqueue_script('hoffice-libs-fastclick', 'http://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.3/fastclick.min.js', array(), false, true);
+    wp_enqueue_script('hoffice-libs-magnific-popup', get_template_directory_uri() . '/libs/magnific-popup/jquery.magnific-popup.min.js', array(), false, true);
 
     wp_enqueue_script('hoffice-hoffice', get_template_directory_uri() . '/js/hoffice.js', array(), '20141201', true);
 
@@ -249,7 +250,7 @@ class Walker_Index_Page_Menu extends Walker_Nav_Menu
         $item_output .= '<a' . $attributes . '>';
 
         $item_output .= '<figure>';
-        $item_output .= '<div class="overlay-for-hover"></div>';
+        $item_output .= '<div class="menu-item-overlay"></div>';
 
         $imageThumbnailField = get_field("thumbnail", $item->object_id);
         $item_output .= '<img src="' . $imageThumbnailField["url"] . '"/>';

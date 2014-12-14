@@ -25,16 +25,7 @@
 	<header id="masthead" class="site-header" role="banner">
 		<div class="site-branding">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-                <?php
-                    $opening_wrapper_tag = "";
-                    $closing_wrapper_tag = "";
-
-                    if(is_home()) {
-                        $opening_wrapper_tag = "<h1>";
-                        $closing_wrapper_tag = "</h1>";
-                    }
-                    echo $opening_wrapper_tag . get_bloginfo( 'name' ) . $closing_wrapper_tag;
-                ?>
+                <?php echo get_bloginfo( 'name' ); ?>
             </a>
             <button class="styleless"></button>
 		</div><!-- .site-branding -->

@@ -61,7 +61,7 @@ CBR.Controllers.Base = P(function (c) {
         if (!this.$html.hasClass("header-menu-open")) {
             this.$headerBar.addClass("header-menu-open");
 
-            TweenLite.set(this.$headerMenu, {transformOrigin: "left " + this.$headerBar.height() + "px 0", skewX: "-90deg", zIndex: 1});
+            TweenLite.set(this.$headerMenu, {transformOrigin: "left " + this.$headerBar.height() + "px 0", skewX: "-90deg", zIndex: 10});
             TweenLite.to(this.$headerMenu, 0.4, {skewX: "0deg", onComplete: function () {
                 this.$html.addClass("header-menu-open");
                 this._addScrollbarWidthMargin();

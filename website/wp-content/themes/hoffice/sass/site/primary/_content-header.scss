@@ -9,10 +9,11 @@
     top: 50%;
     @include transform(translateY(-50%));
 
-    @include heading-style-h1;
-    font-weight: bold;
+    padding: 0 0.5em;
 
-    line-height: 1.25em;
+    font-family: $font__headings;
+    color: $color__background-body;
+    font-weight: bold;
 
     $entry-title-adaptive-font-size: 10;
     font-size: #{$entry-title-adaptive-font-size}vw;

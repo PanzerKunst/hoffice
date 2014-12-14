@@ -9,7 +9,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
     <?php $imageField = get_field("header_image", get_the_ID());
-        echo '<header id="content-header" class="entry-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(' . $imageField["url"] . ')">
+        echo '<header id="content-header" class="entry-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(' . $imageField["url"] . ')">
             <h1 class="entry-title">' . get_the_title() . '</h1>
         </header>';
     ?>

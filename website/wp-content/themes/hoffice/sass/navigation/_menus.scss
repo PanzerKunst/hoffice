@@ -94,34 +94,26 @@ ul.menu {
   > a {
     float: left;
 
-    @include heading-style-h1;
+    font-family: $font__headings;
+    color: $color__background-hr;
 
     text-decoration: none;
 
     // For margin declarations to work
     display: inline-block;
 
-    margin: ceil($spacer-unit-size/4) 0 0 $spacer-unit-size;
+    margin: 2px 0 0 $spacer-unit-size;
 
     @include large-screen {
-      margin: 5px 0 0 25px;
+      margin: 1px 0 0 25px;
     }
 
     $home-menu-font-size: $font__size-body-large-screen;
 
     font-size: $home-menu-font-size;
-
-    // On index page, the text is wrapped in <h1>
-    > h1 {
-      font-size: $home-menu-font-size;
-    }
-
     @include large-screen {
       $home-menu-font-size: $font__size-h2;
       font-size: $home-menu-font-size;
-      > h1 {
-        font-size: $home-menu-font-size;
-      }
     }
   }
 
@@ -229,55 +221,6 @@ html.scrolled-down {
     @include large-screen {
       font-size: #{$header-menu-adaptive-font-size * $font__adaptive-ratio-between-vw-and-px}px;
     }
-  }
-}
-
-#post-thumbnails {
-  text-align: center;
-  background-color: $color__post-thumbnails;
-  color: $color__background-body;
-
-  padding-bottom: $default-spacer-size;
-  @include large-screen {
-    padding-bottom: $default-spacer-size-large-screen;
-  }
-
-  > div {
-    display: inline;
-  }
-
-  article {
-    display: inline-block;
-    vertical-align: bottom;
-
-    margin: 0 $spacer-unit-size 4*$spacer-unit-size $spacer-unit-size;
-
-    max-width: $min-content-width - 2 * $spacer-unit-size;
-
-    &.format-standard,
-    &.format-aside,
-    &.format-quote {
-      > .entry-content {
-        display: none;
-      }
-    }
-
-    // Hidden before set to correct size in JS
-    &.format-video {
-      display: none;
-    }
-  }
-
-  p {
-    margin-bottom: 0;
-  }
-
-  a {
-    color: $color__background-body;
-  }
-
-  .entry-footer {
-    display: none;
   }
 }
 

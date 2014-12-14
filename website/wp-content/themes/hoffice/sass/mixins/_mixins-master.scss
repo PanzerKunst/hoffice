@@ -53,8 +53,3 @@
 @mixin transition-all-attributes {
   @include transition(all 300ms ease 0s);
 }
-
-@mixin heading-style-h1 {
-  font-family: $font__headings;
-  color: $color__background-hr;
-}
