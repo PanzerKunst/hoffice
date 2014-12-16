@@ -6,10 +6,11 @@ $font__line-height-pre: 1.6;
 $font__line-height-headings: 1.25;
 $font__headings: Aileron;  // Capita-Light, Bitter, Nexa, Aileron-Bold/Heavy, Glober
 
+$font__size-body: 16px;
+$font__size-body-large-screen: $font__size-body * 1.25;
 $font__size-h1: 42px;
 $font__size-h2: 30px;
 $font__size-h3: 25px;
 $font__size-h4: 22px;
-$font__size-body-large-screen: 20px;
 
 $font__adaptive-ratio-between-vw-and-px: 9.5;

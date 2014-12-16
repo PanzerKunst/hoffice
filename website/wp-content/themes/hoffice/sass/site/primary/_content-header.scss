@@ -2,7 +2,7 @@
   background-size: auto, cover;
   background-position: 0% 0%, center center;
 
-  position: relative;
+  position: relative; // To relatively position child
 
   > .entry-title {
     position: relative;
@@ -14,6 +14,7 @@
     font-family: $font__headings;
     color: $color__background-body;
     font-weight: bold;
+    text-shadow: 1px 2px 40px $color__dark-background;
 
     $entry-title-adaptive-font-size: 10;
     font-size: #{$entry-title-adaptive-font-size}vw;
@@ -21,35 +22,4 @@
       font-size: #{$entry-title-adaptive-font-size * $font__adaptive-ratio-between-vw-and-px}px;
     }
   }
-}
-
-#scroll-to-content {
-  $scroll-to-content-size: 40px;
-
-  width: $scroll-to-content-size;
-  height: $scroll-to-content-size;
-
-  position: absolute;
-  bottom: $spacer-unit-size;
-  left: 50%;
-  margin-left: -$scroll-to-content-size/2;
-
-  $down-arrow-button-image-location-x: 0;
-  $down-arrow-button-image-location-y: 0;
-
-  background: transparent url($sprite-url) repeat-x scroll $down-arrow-button-image-location-x $down-arrow-button-image-location-y;
-
-  @include hdpi-sprite;
-
-  @include hidpi {
-    background-position: half-pos($down-arrow-button-image-location-x, $down-arrow-button-image-location-y);
-  }
-
-  opacity: 0.7;
-
-  &:hover {
-    opacity: 1;
-  }
-
-  @include transition-all-attributes;
 }

@@ -129,26 +129,14 @@ ul.menu {
     $menu-button-image-location-x: $menu-button-image-location-x-white;
     $menu-button-image-location-y: 0;
 
-    background: transparent url($sprite-url) repeat-x scroll $menu-button-image-location-x $menu-button-image-location-y;
-
     @include hdpi-sprite;
-
+    background-position: $menu-button-image-location-x $menu-button-image-location-y;
     @include hidpi {
       background-position: half-pos($menu-button-image-location-x, $menu-button-image-location-y);
     }
 
     width: 40px;
     height: 40px;
-
-
-    $menu-button-image-location-x: $menu-button-image-location-x-white;
-    $menu-button-image-location-y: 0;
-
-    background-position: $menu-button-image-location-x $menu-button-image-location-y;
-
-    @include hidpi {
-      background-position: half-pos($menu-button-image-location-x, $menu-button-image-location-y);
-    }
   }
 }
 

@@ -11,7 +11,8 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">Wordpress website made by <a href="http://www.8b.nu">8b</a>, Stockholm Sweden.</div><!-- .site-info -->
+        Foo
+		<!-- div class="site-info">Wordpress website made by <a href="http://www.8b.nu">8b</a>, Stockholm Sweden.</div --><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

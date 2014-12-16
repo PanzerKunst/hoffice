@@ -1,3 +1,6 @@
+$z-index-more-than-overlay: 1;
+$menu-picture-overlay-opacity-on-hover: 0.1;
+
 body.home {
   .site-content {
     padding-bottom: 0;
@@ -35,11 +38,6 @@ body.home {
     }
   }
 
-  aside,
-  .entry-header {
-    min-height: 70px; // Enough for 2 lines of text
-  }
-
   // To avoid weird bottom space in the container
   img {
     display: block;
@@ -56,13 +54,13 @@ body.home {
   }
 
   h2 {
-    font-size: $font__size-body-large-screen;
     padding: 0 $spacer-unit-size;
+    margin: 0;
 
-    position: relative; // For z-index to be taken into account
-    z-index: 1; // More than the overlay
-
-    @include transition-all-attributes;
+    font-size: $font__size-body-large-screen;
+    > a {
+      font-size: $font__size-body-large-screen;
+    }
   }
 }
 
@@ -75,7 +73,7 @@ body.home {
 
     &:hover {
       figure > .menu-item-overlay {
-        opacity: 0.1;
+        opacity: $menu-picture-overlay-opacity-on-hover;
       }
       aside > .menu-item-overlay {
         height: 100%;
@@ -87,7 +85,7 @@ body.home {
   }
 
   figure {
-    position: relative;
+    position: relative; // To relatively position child .menu-item-overlay
 
     > .menu-item-overlay {
       background-color: $color__dark-background;
@@ -96,47 +94,133 @@ body.home {
   }
 
   aside {
-    position: relative;
+    min-height: 70px; // Enough for 2 lines of text
+
+    position: relative; // To relatively position child .menu-item-overlay
 
     > .menu-item-overlay {
       background-color: $color__action;
       height: 0;
     }
   }
+
+  h2 {
+    z-index: $z-index-more-than-overlay;
+    position: relative; // For z-index to be taken into account
+
+    @include transition-all-attributes;
+  }
 }
 
 .index-menu-container.posts {
-  background-color: $color__action;
-  padding-top: $default-spacer-size-large-screen;
+  background-image: url("images/background-green.png");
+
+  padding: $default-spacer-size 0;
+  @include large-screen {
+    padding: $default-spacer-size-large-screen 0;
+  }
 }
 
 #index-menu-posts {
   li {
-    &.format-standard,
-    &.format-aside,
-    &.format-quote {
-      > .entry-content > * {
-        display: none;
+    color: $color__background-body;
+    a {
+      color: $color__background-body;
+    }
+
+    &:hover {
+      color: $color__text-input;
+      a {
+        color: $color__action;
+      }
+
+      .entry-header > .menu-item-overlay {
+        height: 100%;
+      }
+
+      .entry-content .menu-item-overlay {
+        opacity: $menu-picture-overlay-opacity-on-hover;
       }
     }
 
-    // Hidden before set to correct size in JS
-    &.format-video {
-      display: none;
-
-      a {
-        position: relative;
+    &.format-standard .entry-content {
+      > a {
+        position: relative; // To relatively position child .menu-item-overlay
+        display: block; // Necessary for the child .menu-item-overlay to have a size
       }
+    }
+
+    &.format-video {
+      > .entry-content {
+        a {
+          position: relative; // Necessary for the play icon to be displayed
+          display: block; // Necessary for the play icon to be located correctly
+
+          &:after {
+            $play-icon-location-x: -400px;
+            $play-icon-location-y: 0;
+
+            @include hdpi-sprite;
+            background-position: $play-icon-location-x $play-icon-location-y;
+            @include hidpi {
+              background-position: half-pos($play-icon-location-x, $play-icon-location-y);
+            }
+
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            $play-icon-size: 60px;
+            height: $play-icon-size;
+            width: $play-icon-size;
+            margin-top: -$play-icon-size/2;
+            margin-left: -$play-icon-size/2;
+
+            @include transition-all-attributes;
+
+            opacity: 0.65;
+          }
+        }
+      }
+
+      &:hover {
+        > .entry-content a:after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .entry-header {
+    position: relative; // To relatively position child
+    min-height: 92px; // Enough for 2 lines of title + meta
+
+    > div:first-child {
+      z-index: $z-index-more-than-overlay;
+      position: relative; // For z-index to be taken into account
+    }
+
+    > .menu-item-overlay {
+      background-color: $color__background-body;
+      height: 0;
     }
   }
 
   .entry-content {
     padding: 0;
+
+    .menu-item-overlay {
+      background-color: $color__dark-background;
+      opacity: 0;
+    }
   }
 
   h2,
-  a {
-    color: $color__background-body;
+  a,
+  time,
+  .byline {
+    @include transition-all-attributes;
   }
 
   p {
