@@ -193,22 +193,12 @@ html.scrolled-down {
   h2 {
     text-transform: uppercase;
     color: $color__text-input;
-
-    $header-menu-adaptive-font-size: 3;
-    font-size: #{$header-menu-adaptive-font-size}vw;
-    @include large-screen {
-      font-size: #{$header-menu-adaptive-font-size * $font__adaptive-ratio-between-vw-and-px}px;
-    }
+    @include adaptive-font-size(4);
   }
 
   a {
     color: $color__background-body;
-
-    $header-menu-adaptive-font-size: 5;
-    font-size: #{$header-menu-adaptive-font-size}vw;
-    @include large-screen {
-      font-size: #{$header-menu-adaptive-font-size * $font__adaptive-ratio-between-vw-and-px}px;
-    }
+    @include adaptive-font-size(5);
   }
 }
 

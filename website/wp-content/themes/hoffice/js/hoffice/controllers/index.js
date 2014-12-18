@@ -1,12 +1,9 @@
 CBR.Controllers.Index = P(CBR.Controllers.Base, function (c, base) {
-    c.animatedVisibleMenuItems = [];
-    c.menuItemsToAnimateOnNextScroll = [];
-
     c.run = function () {
         this._initElements();
         this._initEvents();
 
-        this._displayFirstTreePagesMenu();
+        this._displayMenuItems();
         this._removeTransitionsOfMenuItemTextBackgroundOnTouchBrowsers();
         this._initMagnificPopups();
     };
@@ -32,23 +29,11 @@ CBR.Controllers.Index = P(CBR.Controllers.Base, function (c, base) {
         this.$recentPostsMenuItems = this.$postsMenuItems.filter(":visible");
         this.$oldPostsMenuItems = $(_.difference(this.$postsMenuItems.toArray(), this.$recentPostsMenuItems.toArray()));
 
-        this.$menuItemsToAnimateOnScroll = $(this.$pagesMenuItems.toArray().concat(this.$recentPostsMenuItems.toArray()));
+        this.$menuItemsExceptOldPosts = $(this.$pagesMenuItems.toArray().concat(this.$recentPostsMenuItems.toArray()));
     };
 
     c._initEvents = function () {
         base.initEvents();
-
-        if (Modernizr.touch) {   // Because checking visibility outside viewport doesn't work in touch browsers
-            this.$menuItemsToAnimateOnScroll.each(function (index, element) {
-                var $menuItem = $(element);
-                this._animateMenuItem($menuItem);
-
-                // For the sake of code logic; not really necessary
-                this.animatedVisibleMenuItems.push($menuItem[0]);
-            }.bind(this));
-        } else {
-            $(window).scroll(_.debounce($.proxy(this._animateVisibleMenuItems, this), 15));
-        }
 
         this.$showMorePostsBtn.click($.proxy(this._showRemainingPosts, this));
     };
@@ -63,44 +48,10 @@ CBR.Controllers.Index = P(CBR.Controllers.Base, function (c, base) {
         }
     };
 
-    c._displayFirstTreePagesMenu = function () {
-        // On touch browsers, no need, because everything will be displayed immediately anyway
-        if (!Modernizr.touch) {
-            var maxIndex = this.$pagesMenuItems.length;
-            if (maxIndex > 3) {
-                maxIndex = 3
-            }
-
-            for (var i = 0; i < maxIndex; i++) {
-                var element = this.$pagesMenuItems[i];
-                this._animateMenuItem($(element));
-                this.animatedVisibleMenuItems.push(element);
-            }
-        }
-    };
-
-    c._animateVisibleMenuItems = function () {
-        // We need to clone otherwise we splice an array that we are traversing
-        this.menuItemsToAnimateOnNextScroll.clone().forEach(function ($menuItem, index) {
-            // We animate the text bubble after a split second
-            setTimeout(function () {
-                this._animateMenuItem($menuItem);
-            }.bind(this), 250);
-
-            // We would move this line inside _animateTextBubble() if it wasn't for the 250ms delay
-            this.animatedVisibleMenuItems.push($menuItem[0]);
-
-            // The text bubble has been animated, we remove it from the array
-            this.menuItemsToAnimateOnNextScroll.splice(index);
-        }.bind(this));
-
-        this.$menuItemsToAnimateOnScroll.each(function (index, element) {
+    c._displayMenuItems = function () {
+        this.$menuItemsExceptOldPosts.each(function (index, element) {
             var $menuItem = $(element);
-
-            if (!_.contains(this.animatedVisibleMenuItems, element) && $menuItem.visible(true)) {   // If partially visible
-                // We store the element it one to be animated on next scroll
-                this.menuItemsToAnimateOnNextScroll.push($menuItem);
-            }
+            this._animateMenuItem($menuItem);
         }.bind(this));
     };
 
@@ -163,8 +114,10 @@ CBR.Controllers.Index = P(CBR.Controllers.Base, function (c, base) {
     c._showRemainingPosts = function () {
         this.$oldPostsMenuItems.each(function (index, element) {
             this._animateMenuItem($(element));
-            this.animatedVisibleMenuItems.push(element);
         }.bind(this));
+
+        var scrollYPos = $(this.$oldPostsMenuItems[0]).offset().top;
+        TweenLite.to(window, 0.3, {scrollTo: scrollYPos, ease:Power1.easeIn});
 
         this.$showMorePostsBtn.hide();
     };

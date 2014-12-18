@@ -16,10 +16,6 @@
     font-weight: bold;
     text-shadow: 1px 2px 40px $color__dark-background;
 
-    $entry-title-adaptive-font-size: 10;
-    font-size: #{$entry-title-adaptive-font-size}vw;
-    @include large-screen {
-      font-size: #{$entry-title-adaptive-font-size * $font__adaptive-ratio-between-vw-and-px}px;
-    }
+    @include adaptive-font-size(8);
   }
 }

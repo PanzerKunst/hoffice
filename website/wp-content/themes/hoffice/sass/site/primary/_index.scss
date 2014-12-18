@@ -71,6 +71,13 @@ body.home {
     > a {
       font-size: $font__size-body-large-screen;
     }
+
+    @include large-screen {
+      font-size: $font__size-h3;
+      > a {
+        font-size: $font__size-h3;
+      }
+    }
   }
 }
 
