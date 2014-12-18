@@ -62,3 +62,7 @@ html.header-menu-open {
     padding-bottom: $default-spacer-size-large-screen;
   }
 }
+
+.no-transiton {
+  @include transition(none !important);
+}
