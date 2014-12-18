@@ -46,8 +46,4 @@
         </div>
         <div class="menu-item-overlay"></div>
     </header><!-- .entry-header -->
-
-    <footer class="entry-footer">
-        <?php hoffice_entry_footer(); ?>
-    </footer><!-- .entry-footer -->
 </li><!-- #post-## --><!--

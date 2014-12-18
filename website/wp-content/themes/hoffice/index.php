@@ -28,7 +28,7 @@ get_header(); ?>
                     'menu_id' => 'index-menu-pages',
                     'link_before' => '<aside><h2>',
                     'link_after' => '</h2><div class="menu-item-overlay"></div></aside>',
-                    'container_class' => 'index-menu-container hoffice-page-content',
+                    'container_class' => 'index-menu-container',
                     'items_wrap' => '<ul id="%1$s" class="%2$s"><!--%3$s--></ul>'
                 )
             ); ?>
@@ -53,7 +53,7 @@ get_header(); ?>
 
                  --></ul>
                     <div>
-                        <button>Show more blog posts</button>
+                        <button id="show-more-posts">Show more blog posts</button>
                     </div>
                 </div>
 

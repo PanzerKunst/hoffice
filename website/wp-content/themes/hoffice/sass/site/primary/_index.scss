@@ -24,11 +24,16 @@ body.home {
     }
 
     > li {
+      visibility: hidden;  // Will be shown in JavaScript
+
       display: inline-block;
       vertical-align: bottom;
 
       padding: 0 $spacer-unit-size; // We use padding instead of margin because we need to include it in the width: 33%
-      margin-bottom: 4*$spacer-unit-size;
+      margin-top: $default-spacer-size;
+      @include large-screen {
+        margin-top: $default-spacer-size-large-screen;
+      }
 
       max-width: $min-content-width;
       @media screen and (min-width: $max-content-width * 100 / $menu-width-large-screen-percent) {
@@ -122,7 +127,7 @@ body.home {
 }
 
 #index-menu-posts {
-  li {
+  > li {
     color: $color__background-body;
     a {
       color: $color__background-body;
@@ -225,9 +230,5 @@ body.home {
 
   p {
     margin: 0;
-  }
-
-  .entry-footer {
-    display: none;
   }
 }

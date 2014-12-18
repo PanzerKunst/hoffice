@@ -25,17 +25,6 @@ CBR.Controllers.Base = P(function (c) {
         $(window).scroll(_.debounce($.proxy(this._checkHeaderBackground, this), 15));
 
         this.$headerBar.children("button").click($.proxy(this._toggleHeaderMenu, this));
-
-        /* TODO: remove
-        var headerBarHeight = this.$headerBar.height();
-
-        $("#scroll-to-content").click(function (e) {
-            e.preventDefault();
-
-            var contentYPos = $(".hoffice-page-content").offset().top;
-            var scrollYPos = contentYPos - headerBarHeight;
-            TweenLite.to(window, 0.3, {scrollTo: scrollYPos, ease: Power1.easeIn});
-        }); */
     };
 
     c._checkHeaderBackground = function(e) {
