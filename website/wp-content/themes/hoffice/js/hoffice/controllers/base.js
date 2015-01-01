@@ -10,6 +10,24 @@ CBR.Controllers.Base = P(function (c) {
         this.options = options;
     };
 
+    c.saveInLocalStorage = function (key, value) {
+        if (Modernizr.localstorage) {
+            localStorage.setItem(key, JSON.stringify(value));
+        }
+    };
+
+    c.getFromLocalStorage = function (key) {
+        if (Modernizr.localstorage) {
+            return JSON.parse(localStorage.getItem(key));
+        }
+    };
+
+    c.removeFromLocalStorage = function (key) {
+        if (Modernizr.localstorage) {
+            localStorage.removeItem(key);
+        }
+    };
+
     c.initElements = function () {
         this.$html = $("html");
         this.$headerBar = $(".site-branding");
@@ -22,9 +40,12 @@ CBR.Controllers.Base = P(function (c) {
     };
 
     c.initEvents = function () {
-        $(window).scroll(_.debounce($.proxy(this._checkHeaderBackground, this), 15));
+        // Disabled on touch browsers - doesn't look good enough
+        if (!Modernizr.touch) {
+            $(window).scroll(_.debounce($.proxy(this._checkHeaderBackground, this), 15));
+        }
 
-        this.$headerBar.children("button").click($.proxy(this._toggleHeaderMenu, this));
+        this.$headerBar.find("button").click($.proxy(this._toggleHeaderMenu, this));
     };
 
     c._checkHeaderBackground = function(e) {

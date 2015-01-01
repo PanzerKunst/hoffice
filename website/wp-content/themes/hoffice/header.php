@@ -24,10 +24,12 @@
 
 	<header id="masthead" class="site-header" role="banner">
 		<div class="site-branding">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+            <div>
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
                 <?php echo get_bloginfo( 'name' ); ?>
-            </a>
-            <button class="styleless"></button>
+                </a>
+                <button class="styleless"></button>
+            </div>
 		</div><!-- .site-branding -->
 	</header><!-- #masthead -->
 

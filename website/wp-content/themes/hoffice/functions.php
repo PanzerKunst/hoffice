@@ -5,8 +5,8 @@
  * @package Hoffice
  */
 
-update_option('siteurl','http://192.168.1.2');
-update_option('home','http://192.168.1.2');
+update_option('siteurl','http://127.0.0.1');
+update_option('home','http://127.0.0.1');
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -122,6 +122,7 @@ function hoffice_scripts()
     wp_enqueue_script('hoffice-libs-gsap-css-plugin', 'http://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.0/plugins/CSSPlugin.min.js', array(), false, true);
     wp_enqueue_script('hoffice-libs-gsap-scroll-to-plugin', 'http://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.0/plugins/ScrollToPlugin.min.js', array(), false, true);
     wp_enqueue_script('hoffice-libs-fastclick', 'http://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.3/fastclick.min.js', array(), false, true);
+    wp_enqueue_script('hoffice-libs-modernizr', 'http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', array(), false, true);
 
     wp_enqueue_script('hoffice-hoffice', get_template_directory_uri() . '/js/hoffice.js', array(), '20141201', true);
 

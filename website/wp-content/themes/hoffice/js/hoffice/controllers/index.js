@@ -1,4 +1,6 @@
 CBR.Controllers.Index = P(CBR.Controllers.Base, function (c, base) {
+    c.localStorageKey_showMorePostsBtnClicked = 1;
+
     c.run = function () {
         this._initElements();
         this._initEvents();
@@ -53,6 +55,10 @@ CBR.Controllers.Index = P(CBR.Controllers.Base, function (c, base) {
             var $menuItem = $(element);
             this._animateMenuItem($menuItem);
         }.bind(this));
+
+        if (this.getFromLocalStorage(this.localStorageKey_showMorePostsBtnClicked)) {
+            this._showRemainingPosts();
+        }
     };
 
     c._animateMenuItem = function ($menuItem) {
@@ -111,14 +117,19 @@ CBR.Controllers.Index = P(CBR.Controllers.Base, function (c, base) {
         this.$videoArticles.css("display", "inline-block");
     };
 
-    c._showRemainingPosts = function () {
+    c._showRemainingPosts = function (e) {
         this.$oldPostsMenuItems.each(function (index, element) {
             this._animateMenuItem($(element));
         }.bind(this));
 
-        var scrollYPos = $(this.$oldPostsMenuItems[0]).offset().top;
-        TweenLite.to(window, 0.3, {scrollTo: scrollYPos, ease:Power1.easeIn});
+        // We don't want to scrollTo if this function was called from this._displayMenuItems()
+        if (e) {
+            var scrollYPos = $(this.$oldPostsMenuItems[0]).offset().top;
+            TweenLite.to(window, 0.3, {scrollTo: scrollYPos, ease:Power1.easeIn});
+        }
 
         this.$showMorePostsBtn.hide();
+
+        this.saveInLocalStorage(this.localStorageKey_showMorePostsBtnClicked, true);
     };
 });

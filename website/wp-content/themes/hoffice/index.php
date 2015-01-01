@@ -18,7 +18,7 @@ get_header(); ?>
 
             <div id="content-header">
                 <h1 class="entry-title"><?php bloginfo( 'description' ); ?></h1>
-                <a href="#" class="btn call-to-action">Yes!</a>
+                <a href="/hitta-eller-starta-en-hoffice-grupp" class="btn call-to-action">Find a Hoffice nearby</a>
             </div>
 
             <?php wp_nav_menu(

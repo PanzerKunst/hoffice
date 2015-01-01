@@ -19,6 +19,29 @@
 
 body.page,
 body.single {
+  #content-header {
+    > .entry-meta {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      @include transform(translateY(-100%) translateX(-50%));
+
+      display: inline-block;  // For the translateX to work
+
+      color: $color__background-body;
+
+      font-size: $font__size-body-large-screen !important;
+      @include medium-screen {
+        font-size: $font__size-h4 !important;
+      }
+      @include large-screen {
+        font-size: $font__size-h3 !important;
+      }
+
+      @include header-text-shadow;
+    }
+  }
+
   .entry-content,
   .entry-footer {
     @include max-widthed-content;
