@@ -7,11 +7,12 @@ CBR.Controllers.Index = P(CBR.Controllers.Base, function (c, base) {
 
         this._displayMenuItems();
         this._removeTransitionsOfMenuItemTextBackgroundOnTouchBrowsers();
-        this._initMagnificPopups();
     };
 
     c._initElements = function () {
         base.initElements();
+
+        this.$header = $("#masthead");
 
         this.$menuContainer = $(".index-menu-container");
 
@@ -23,6 +24,7 @@ CBR.Controllers.Index = P(CBR.Controllers.Base, function (c, base) {
 
         this.$videoArticles = $("li.format-video");
         this.$videoLinks = this.$videoArticles.children(".entry-content").find("a");
+        this._initMagnificPopups();
 
         this.$showMorePostsBtn = $("#show-more-posts");
 
@@ -87,11 +89,11 @@ CBR.Controllers.Index = P(CBR.Controllers.Base, function (c, base) {
 
     c._removeTransitionsOfMenuItemTextBackgroundOnTouchBrowsers = function () {
         if (Modernizr.touch) {
-            this.$menuContainer.find(".menu-item-overlay").addClass("no-transiton");
-            this.$menuContainer.find("h2").addClass("no-transiton");
-            this.$postsMenu.find("a").addClass("no-transiton");
-            this.$postsMenu.find("time").addClass("no-transiton");
-            this.$postsMenu.find(".byline").addClass("no-transiton");
+            this.$menuContainer.find(".menu-item-overlay").addClass("no-transition");
+            this.$menuContainer.find("h2").addClass("no-transition");
+            this.$postsMenu.find("a").addClass("no-transition");
+            this.$postsMenu.find("time").addClass("no-transition");
+            this.$postsMenu.find(".byline").addClass("no-transition");
         }
     };
 
@@ -124,8 +126,8 @@ CBR.Controllers.Index = P(CBR.Controllers.Base, function (c, base) {
 
         // We don't want to scrollTo if this function was called from this._displayMenuItems()
         if (e) {
-            var scrollYPos = $(this.$oldPostsMenuItems[0]).offset().top;
-            TweenLite.to(window, 0.3, {scrollTo: scrollYPos, ease:Power1.easeIn});
+            var scrollYPos = $(this.$oldPostsMenuItems[0]).offset().top - this.$header.height();
+            TweenLite.to(window, 0.3, {scrollTo: scrollYPos, ease: Power1.easeIn});
         }
 
         this.$showMorePostsBtn.hide();

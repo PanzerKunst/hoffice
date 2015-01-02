@@ -62,7 +62,7 @@
 }
 
 @mixin adaptive-font-size($font-size) {
-  font-size: #{$font-size}vw;
+  font-size: #{$font-size * 4}px; // Initially "#{$font-size}vw", but doesn't work well on the iOS Safari
   @include medium-screen {
     font-size: #{$font-size * 6.4}px;
   }
@@ -79,7 +79,7 @@
   dl, dt, dd, ol, ul, li,
   fieldset, form, label, legend,
   table, caption, tbody, tfoot, thead, tr, th, td {
-    font-size: #{$font-size}vw;
+    font-size: #{$font-size * 4}px;
     @include medium-screen {
       font-size: #{$font-size * 6.4}px;
     }

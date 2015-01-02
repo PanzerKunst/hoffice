@@ -1,6 +1,5 @@
 CBR.Controllers.Base = P(function (c) {
     c.scrollTimer = null;
-    c.contentHeaderHeight = window.innerHeight * 3 / 4;
 
     c.HEADER_BAR_DARK_MODE = 0;
     c.HEADER_BAR_WHITE_MODE = 1;
@@ -29,23 +28,32 @@ CBR.Controllers.Base = P(function (c) {
     };
 
     c.initElements = function () {
+        this.$window = $(window);
         this.$html = $("html");
         this.$headerBar = $(".site-branding");
         this.$headerMenu = $("#header-menu");
         this.$headerMenuSections = this.$headerMenu.children();
         this.$content = $("#content");
+        this.$contentHeader = $("#content-header");
 
-        $("#content-header").height(this.contentHeaderHeight);
+        this._initContentHeaderHeight();
         $("#page").show();
     };
 
     c.initEvents = function () {
+        this.$window.resize(_.debounce($.proxy(this._initContentHeaderHeight, this), 15));
+
         // Disabled on touch browsers - doesn't look good enough
         if (!Modernizr.touch) {
-            $(window).scroll(_.debounce($.proxy(this._checkHeaderBackground, this), 15));
+            this.$window.scroll(_.debounce($.proxy(this._checkHeaderBackground, this), 15));
         }
 
         this.$headerBar.find("button").click($.proxy(this._toggleHeaderMenu, this));
+    };
+
+    c._initContentHeaderHeight = function(e) {
+        this.contentHeaderHeight = window.innerHeight * 3 / 4;
+        this.$contentHeader.height(this.contentHeaderHeight);
     };
 
     c._checkHeaderBackground = function(e) {

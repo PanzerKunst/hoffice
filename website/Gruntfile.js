@@ -91,7 +91,6 @@ module.exports = function (grunt) {
             build: {
                 src: [
                     // Libs
-                    // TODO 'wp-content/themes/hoffice/libs/MyFontsWebfontsKit.css',
                     'wp-content/themes/hoffice/libs/magnific-popup/magnific-popup.css',
 
                     // Rest

@@ -5,22 +5,32 @@ body.home {
   #content-header {
     @include background-image(linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("images/index-header.jpg"));
 
-    > .entry-title {
-      @include transform(translateY(-70%));
-    }
-
-    > .call-to-action {
+    > div {
       position: relative;
       top: 50%;
-      left: 50%;
-      @include transform(translateY(-100%) translateX(-50%));
-
-      display: inline-block;  // For the transform to work
+      @include transform(translateY(-50%));
     }
   }
 
   .site-content {
     padding-bottom: 0;
+  }
+}
+
+#call-to-action {
+  margin-top: $spacer-unit-size;
+  @include medium-screen {
+    margin-top: $spacer-unit-size * 2;
+  }
+  @include large-screen {
+    margin-top: $spacer-unit-size * 3;
+  }
+
+  text-align: center;
+
+  > .btn {
+    // For the <div> wrapper to take the height of the button
+    display: inline-block;
   }
 }
 
@@ -161,25 +171,27 @@ body.home {
       color: $color__background-body;
     }
 
-    &:hover {
-      color: $color__text-input;
-      a {
-        color: $color__action;
+    &.format-standard {
+      &:hover {
+        color: $color__text-input;
+        a {
+          color: $color__action;
+        }
+
+        .entry-header > .menu-item-overlay {
+          height: 100%;
+        }
+
+        .entry-content .menu-item-overlay {
+          opacity: $menu-picture-overlay-opacity-on-hover;
+        }
       }
 
-      .entry-header > .menu-item-overlay {
-        height: 100%;
-      }
-
-      .entry-content .menu-item-overlay {
-        opacity: $menu-picture-overlay-opacity-on-hover;
-      }
-    }
-
-    &.format-standard .entry-content {
-      > a {
-        position: relative; // To relatively position child .menu-item-overlay
-        display: block; // Necessary for the child .menu-item-overlay to have a size
+      .entry-content {
+        > a {
+          position: relative; // To relatively position child .menu-item-overlay
+          display: block; // Necessary for the child .menu-item-overlay to have a size
+        }
       }
     }
 
@@ -215,11 +227,11 @@ body.home {
             opacity: 0.65;
           }
         }
-      }
 
-      &:hover {
-        > .entry-content a:after {
-          opacity: 1;
+        &:hover {
+          a:after {
+            opacity: 1;
+          }
         }
       }
     }
@@ -258,5 +270,12 @@ body.home {
 
   p {
     margin: 0;
+  }
+}
+
+#show-more-posts {
+  margin-top: $default-spacer-size / 2;
+  @include large-screen {
+    margin-top: $default-spacer-size-large-screen / 2;
   }
 }

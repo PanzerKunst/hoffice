@@ -17,8 +17,12 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
             <div id="content-header">
-                <h1 class="entry-title"><?php bloginfo( 'description' ); ?></h1>
-                <a href="/hitta-eller-starta-en-hoffice-grupp" class="btn call-to-action">Find a Hoffice nearby</a>
+                <div>
+                    <h1 class="entry-title"><?php bloginfo( 'description' ); ?></h1>
+                    <div id="call-to-action">
+                        <a href="/hitta-eller-starta-en-hoffice-grupp" class="btn">Find a Hoffice nearby</a>
+                    </div>
+                </div>
             </div>
 
             <?php wp_nav_menu(

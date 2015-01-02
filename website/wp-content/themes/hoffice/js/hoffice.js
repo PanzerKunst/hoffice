@@ -199,7 +199,6 @@ CBR.Services = CBR.Services || {};
 };
 ;CBR.Controllers.Base = P(function (c) {
     c.scrollTimer = null;
-    c.contentHeaderHeight = window.innerHeight * 3 / 4;
 
     c.HEADER_BAR_DARK_MODE = 0;
     c.HEADER_BAR_WHITE_MODE = 1;
@@ -228,23 +227,32 @@ CBR.Services = CBR.Services || {};
     };
 
     c.initElements = function () {
+        this.$window = $(window);
         this.$html = $("html");
         this.$headerBar = $(".site-branding");
         this.$headerMenu = $("#header-menu");
         this.$headerMenuSections = this.$headerMenu.children();
         this.$content = $("#content");
+        this.$contentHeader = $("#content-header");
 
-        $("#content-header").height(this.contentHeaderHeight);
+        this._initContentHeaderHeight();
         $("#page").show();
     };
 
     c.initEvents = function () {
+        this.$window.resize(_.debounce($.proxy(this._initContentHeaderHeight, this), 15));
+
         // Disabled on touch browsers - doesn't look good enough
         if (!Modernizr.touch) {
-            $(window).scroll(_.debounce($.proxy(this._checkHeaderBackground, this), 15));
+            this.$window.scroll(_.debounce($.proxy(this._checkHeaderBackground, this), 15));
         }
 
         this.$headerBar.find("button").click($.proxy(this._toggleHeaderMenu, this));
+    };
+
+    c._initContentHeaderHeight = function(e) {
+        this.contentHeaderHeight = window.innerHeight * 3 / 4;
+        this.$contentHeader.height(this.contentHeaderHeight);
     };
 
     c._checkHeaderBackground = function(e) {
@@ -316,11 +324,12 @@ CBR.Services = CBR.Services || {};
 
         this._displayMenuItems();
         this._removeTransitionsOfMenuItemTextBackgroundOnTouchBrowsers();
-        this._initMagnificPopups();
     };
 
     c._initElements = function () {
         base.initElements();
+
+        this.$header = $("#masthead");
 
         this.$menuContainer = $(".index-menu-container");
 
@@ -332,6 +341,7 @@ CBR.Services = CBR.Services || {};
 
         this.$videoArticles = $("li.format-video");
         this.$videoLinks = this.$videoArticles.children(".entry-content").find("a");
+        this._initMagnificPopups();
 
         this.$showMorePostsBtn = $("#show-more-posts");
 
@@ -396,11 +406,11 @@ CBR.Services = CBR.Services || {};
 
     c._removeTransitionsOfMenuItemTextBackgroundOnTouchBrowsers = function () {
         if (Modernizr.touch) {
-            this.$menuContainer.find(".menu-item-overlay").addClass("no-transiton");
-            this.$menuContainer.find("h2").addClass("no-transiton");
-            this.$postsMenu.find("a").addClass("no-transiton");
-            this.$postsMenu.find("time").addClass("no-transiton");
-            this.$postsMenu.find(".byline").addClass("no-transiton");
+            this.$menuContainer.find(".menu-item-overlay").addClass("no-transition");
+            this.$menuContainer.find("h2").addClass("no-transition");
+            this.$postsMenu.find("a").addClass("no-transition");
+            this.$postsMenu.find("time").addClass("no-transition");
+            this.$postsMenu.find(".byline").addClass("no-transition");
         }
     };
 
@@ -433,8 +443,8 @@ CBR.Services = CBR.Services || {};
 
         // We don't want to scrollTo if this function was called from this._displayMenuItems()
         if (e) {
-            var scrollYPos = $(this.$oldPostsMenuItems[0]).offset().top;
-            TweenLite.to(window, 0.3, {scrollTo: scrollYPos, ease:Power1.easeIn});
+            var scrollYPos = $(this.$oldPostsMenuItems[0]).offset().top - this.$header.height();
+            TweenLite.to(window, 0.3, {scrollTo: scrollYPos, ease: Power1.easeIn});
         }
 
         this.$showMorePostsBtn.hide();
