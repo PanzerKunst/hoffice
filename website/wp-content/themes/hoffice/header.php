@@ -47,7 +47,6 @@
         </section>
 
         <!-- Posts -->
-
         <section id="header-menu-posts">
             <h2>Blog posts</h2>
             <ul class="menu">

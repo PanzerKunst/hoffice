@@ -1,8 +1,8 @@
-$color__action: rgb(255, 138, 56);
+$color__action: rgb(255, 138, 56);  // #FF8A38
 
-$color__background-body: rgb(245, 245, 245);
+$color__background-body: rgb(245, 245, 245);  // #f5f5f5
 $color__background-screen: #f1f1f1;
-$color__background-hr: rgb(204, 204, 204);
+$color__background-hr: rgb(204, 204, 204);  // #ccc
 $color__background-button: $color__action;
 $color__background-pre: #eee;
 $color__background-ins: #fff9c0;
@@ -19,7 +19,7 @@ $color__text-main: #404040;
 $color__border-button: $color__action $color__action darken($color__action, 7.5%);
 $color__border-button-hover: $color__action darken($color__action, 7.5%) darken($color__action, 15%);
 $color__border-button-focus: darken($color__action, 15%) darken($color__action, 7.5%) darken($color__action, 7.5%);
-$color__border-input: rgb(204, 204, 204);;
+$color__border-input: $color__background-hr;
 $color__border-abbr: #666;
 
-$color__dark-background: rgb(37, 37, 37);
+$color__dark-background: rgb(37, 37, 37); // #252525

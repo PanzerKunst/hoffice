@@ -274,8 +274,11 @@ body.home {
 }
 
 #show-more-posts {
-  margin-top: $default-spacer-size / 2;
+  margin-bottom: $default-spacer-size/2;
+  @include medium-screen {
+    margin: $default-spacer-size/2 0;
+  }
   @include large-screen {
-    margin-top: $default-spacer-size-large-screen / 2;
+    margin: $default-spacer-size-large-screen/2 0;
   }
 }

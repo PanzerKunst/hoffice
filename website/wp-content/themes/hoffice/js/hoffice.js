@@ -195,6 +195,14 @@ CBR.Services = CBR.Services || {};
                 return _scrollbarWidth;
             }
         }
+    })(),
+
+    OS: (function () {
+        return {
+            isIOS: function () {
+                return /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
+            }
+        }
     })()
 };
 ;CBR.Controllers.Base = P(function (c) {
@@ -235,6 +243,7 @@ CBR.Services = CBR.Services || {};
         this.$content = $("#content");
         this.$contentHeader = $("#content-header");
 
+        this._addIOSClass();
         this._initContentHeaderHeight();
         $("#page").show();
     };
@@ -248,6 +257,12 @@ CBR.Services = CBR.Services || {};
         }
 
         this.$headerBar.find("button").click($.proxy(this._toggleHeaderMenu, this));
+    };
+
+    c._addIOSClass = function() {
+        if (CBR.Services.Browser.OS.isIOS()) {
+            this.$html.addClass("ios");
+        }
     };
 
     c._initContentHeaderHeight = function(e) {

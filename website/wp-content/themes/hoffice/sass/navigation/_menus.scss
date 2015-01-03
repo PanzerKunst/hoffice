@@ -3,6 +3,8 @@ $header-bar-height-large-screen: 59px;
 $menu-button-image-location-x-white: -100px;
 $menu-button-image-location-x-black: -200px;
 $cross-button-image-location-x-white: -300px;
+$fb-button-image-location-x: -600px;
+$rss-feed-button-image-location-x: -700px;
 
 .main-navigation {
   clear: both;
@@ -60,6 +62,15 @@ ul.menu {
   z-index: $z-index-menu-bar;
 }
 
+.site-branding > div,
+#colophon > div {
+  margin: auto;
+
+  @media screen and (min-width: $max-content-width * 100 / $menu-width-large-screen-percent) {
+    width: percentage($menu-width-large-screen-percent / 100);
+  }
+}
+
 .site-branding {
   background-color: rgba(37, 37, 37, 0.7); // $color__dark-background @0.7
 
@@ -90,15 +101,6 @@ ul.menu {
   }
 
   > div {
-    margin: auto;
-
-    @include medium-screen {
-
-    }
-    @media screen and (min-width: $max-content-width * 100 / $menu-width-large-screen-percent) {
-      width: percentage($menu-width-large-screen-percent / 100);
-    }
-
     @include clearfix;
 
     > a {
@@ -212,7 +214,67 @@ html.scrolled-down {
   }
 }
 
+#header-menu-posts {
+  a,
+  .posted-on {
+    display: block;
+  }
+
+  a {
+    line-height: 1em;
+    margin-top: 0.75em;
+  }
+
+  .posted-on {
+    color: $color__background-hr;
+  }
+}
+
 #colophon {
   background-color: $color__dark-background;
   color: $color__background-body;
+
+  .menu-item {
+    padding: 0 $spacer-unit-size;
+
+    @include medium-screen {
+      display: inline-block;
+    }
+
+    > a {
+      color: $color__background-hr !important;
+    }
+  }
+
+  #mail-to {
+    @include large-screen {
+      font-size: $font__size-body-large-screen;
+    }
+  }
+
+  $social-button-image-location-y: 0;
+
+  .facebook,
+  .rss-feed {
+    $social-button-image-location-x: $fb-button-image-location-x;
+
+    @include hdpi-sprite;
+    background-position: $social-button-image-location-x $social-button-image-location-y;
+    @include hidpi {
+      background-position: half-pos($social-button-image-location-x, $social-button-image-location-y);
+    }
+
+    width: 40px;
+    height: 40px;
+    display: block;
+  }
+
+  .rss-feed {
+    $social-button-image-location-x: $rss-feed-button-image-location-x;
+
+    background-position: $social-button-image-location-x $social-button-image-location-y;
+    @include hidpi {
+      background-position: half-pos($social-button-image-location-x, $social-button-image-location-y);
+    }
+  }
 }

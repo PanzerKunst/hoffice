@@ -416,5 +416,6 @@ class Walker_Header_Menu_Page_Menu extends Walker_Nav_Menu
 function insertPostMenuItem($post) {
     echo '<li>
         <a href="' . get_permalink($post->ID) . '">' . apply_filters('title', $post->post_title) . '</a>
+        <span class="posted-on">' . esc_html( get_the_date(null, $post)) . '</span>
     </li>';
 }

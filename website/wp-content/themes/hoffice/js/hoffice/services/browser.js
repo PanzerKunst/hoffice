@@ -35,5 +35,13 @@ CBR.Services.Browser = {
                 return _scrollbarWidth;
             }
         }
+    })(),
+
+    OS: (function () {
+        return {
+            isIOS: function () {
+                return /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
+            }
+        }
     })()
 };
