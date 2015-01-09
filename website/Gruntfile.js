@@ -34,10 +34,10 @@ module.exports = function (grunt) {
         },
 
         concat: {
-            options: {
-                separator:';'
-            },
-            dist: {
+            js: {
+                options: {
+                    separator:';'
+                },
                 src: [
                     // Non-CDN libs
                     "wp-content/themes/hoffice/libs/p.js",
@@ -62,6 +62,19 @@ module.exports = function (grunt) {
                     // Templates
                 ],
                 dest: 'wp-content/themes/hoffice/js/hoffice.js'
+            },
+            css: {
+                src: [
+                    // Theme header
+                    'wp-content/themes/hoffice/theme-header.css',
+
+                    // Libs
+                    'wp-content/themes/hoffice/libs/magnific-popup/magnific-popup.css',
+
+                    // Rest
+                    'wp-content/themes/hoffice/style.css'
+                ],
+                dest: 'wp-content/themes/hoffice/style.css'
             }
         },
 
@@ -87,19 +100,6 @@ module.exports = function (grunt) {
             }
         }, */
 
-        cssmin: {
-            build: {
-                src: [
-                    // Libs
-                    'wp-content/themes/hoffice/libs/magnific-popup/magnific-popup.css',
-
-                    // Rest
-                    'wp-content/themes/hoffice/style.css'
-                ],
-                dest: 'wp-content/themes/hoffice/style.css'
-            }
-        },
-
         watch: {
             js: {
                 files: ['<%= concat.dist.src %>'],
@@ -114,6 +114,6 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('default', ['buildjs', 'buildcss']);
-    grunt.registerTask('buildjs',  ['jshint', 'concat']);
-    grunt.registerTask('buildcss',  ['sass', 'cssmin']);
+    grunt.registerTask('buildjs',  ['jshint', 'concat:js']);
+    grunt.registerTask('buildcss',  ['sass', 'concat:css']);
 };
