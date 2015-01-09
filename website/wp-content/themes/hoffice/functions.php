@@ -5,9 +5,6 @@
  * @package Hoffice
  */
 
-update_option('siteurl','http://192.168.1.2');
-update_option('home','http://192.168.1.2');
-
 /**
  * Set the content width based on the theme's design and stylesheet.
  */
