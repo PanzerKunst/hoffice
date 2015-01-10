@@ -42,14 +42,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         '4Rh(jnO]zkbB PXt/w@R};3%Yr5kev`kqIpBAy_,p0Ck.BK#VDRT3%4yROyQ6%We');
-define('SECURE_AUTH_KEY',  'x#C_o$bvo%q}1^ MXhW7| Wf*hl.*(e n1 BIyv]tqJ7C%Cuk[vTo$U:HzIgw?`X');
-define('LOGGED_IN_KEY',    '3t.gfdUV9*5+AsQs?8[[42Ry:[)W?<Se_QurUY`deJT!P;D>9ZU.L@%>En1H*lMD');
-define('NONCE_KEY',        'h04#;aLr1DWZPxeZH.wwj,NJFj-TcDwJe9kdsvYBU64u!k1Ev`s$Y/ 8Ovv&m<Qs');
-define('AUTH_SALT',        '@+Rioy]]*NsgMQ~ $1%^,m#dYJ*c.|xY[TjW)#FC={SCsiH}.e/W5IY.&U2Z;<q;');
-define('SECURE_AUTH_SALT', '`PM^P*ioj2C(]$#i2ZWCJ8Xe_-[%:S_)Px5%3].wI<s929SRURlrOxNMQe=zz2E]');
-define('LOGGED_IN_SALT',   'fQN:MkJI<GEiHfFz@edVnlWjK^DVi^p`]A/Qw[M^Wv]xL7=6LhuO=Q^c?XlS5.T.');
-define('NONCE_SALT',       '.N*XRni~C9#3o%=9yGQorT;^,K#m@Nt66t||kZk`M!JN-.KNUPUA>!CcqOCf*oQu');
+define('AUTH_KEY',         '3oY$G.)H@x$yzUlFP8i}c?:Z%f+]oV+h5~qfxU] <@QtkNSFuD^`8jMSh!(B|6t<');
+define('SECURE_AUTH_KEY',  'U4Aiy7B0)[To,~K%hCiNUs2y NQAXD:lu+N-7ePIKWN9Z8GZod/HBEtIJbR.})%2');
+define('LOGGED_IN_KEY',    'HG/Rka|2MW]1_v0&idevZhZ-Shu4GTn)lyP]T7]9D#=Y``v!WM fxF+zMcfB G6}');
+define('NONCE_KEY',        'r#v63vLhkEWygoyl~%EEz:8^r}$Thc6kPDfG>]VL9NT}IIpxPy9R)o>ag/Qp#Qam');
+define('AUTH_SALT',        'k46bm?h?&hjM_CYDz$b,20WJDJyay3)_vhRL#ZrMuZQD1>n.Zbsd|BMnX+4Y_pf/');
+define('SECURE_AUTH_SALT', 'dbWRy,E2)25<(X0M-n*b$/svkr){$;+>>8#0H_aw,g%F+XE=hT eWEIt^`<#VGg,');
+define('LOGGED_IN_SALT',   'a27ik|jvp|djyRaFzZEtfs_|/9&8KZaSCP<vdvKOU;4TqsvM|/4/xG.8pBnjW*64');
+define('NONCE_SALT',       'vR;*F%VK.%wXE0f(u`fy1-</tmN~IRhpxzIHc+c&L.]*E~EErSi<%c_TqGVwyF+,');
 
 /**#@-*/
 
@@ -69,6 +69,15 @@ $table_prefix  = 'wp_';
  * in their development environments.
  */
 define('WP_DEBUG', false);
+
+/* Multisite */
+define( 'WP_ALLOW_MULTISITE', true );
+define('MULTISITE', true);
+define('SUBDOMAIN_INSTALL', false);
+define('DOMAIN_CURRENT_SITE', '192.168.1.125');
+define('PATH_CURRENT_SITE', '/');
+define('SITE_ID_CURRENT_SITE', 1);
+define('BLOG_ID_CURRENT_SITE', 1);
 
 /* That's all, stop editing! Happy blogging. */
 
