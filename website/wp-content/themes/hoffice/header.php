@@ -39,8 +39,6 @@
             <h2>Pages</h2>
             <?php wp_nav_menu(
                 array(
-                    'theme_location' => 'primary',
-                    'walker' => new Walker_Header_Menu_Page_Menu(),
                     'container' => null
                 )
             ); ?>

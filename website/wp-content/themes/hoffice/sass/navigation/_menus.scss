@@ -193,12 +193,9 @@ html.scrolled-down {
   > section {
     opacity: 0;
 
-    margin-top: $default-spacer-size;
+    margin-bottom: $default-spacer-size;
     @include large-screen {
-      margin-top: $default-spacer-size-large-screen;
-    }
-    &:first-child {
-      margin-top: 0;
+      margin-bottom: $default-spacer-size-large-screen;
     }
   }
 
@@ -215,17 +212,19 @@ html.scrolled-down {
 }
 
 #header-menu-posts {
-  a,
-  .posted-on {
-    display: block;
+  > h2 {
+    margin-bottom: 0;
   }
 
   a {
-    line-height: 1em;
     margin-top: 0.75em;
+    display: inline-block;  // For the margin not to bleed out of the container
+
+    line-height: 1em;
   }
 
   .posted-on {
+    display: block;
     color: $color__background-hr;
   }
 }
@@ -234,21 +233,42 @@ html.scrolled-down {
   background-color: $color__dark-background;
   color: $color__background-body;
 
-  .menu-item {
-    padding: 0 $spacer-unit-size;
+  > div {
+    text-align: center;
+    padding: $spacer-unit-size*3 0;
+  }
 
-    @include medium-screen {
-      display: inline-block;
-    }
+  .menu-item {
+    display: inline-block;
+    padding: 0 $spacer-unit-size;
 
     > a {
       color: $color__background-hr !important;
     }
   }
 
+  article {
+    display: inline-block;
+
+    padding: 0 $spacer-unit-size*3;
+    margin-top: $spacer-unit-size * 2;
+
+    vertical-align: top;
+  }
+
+  label,
   #mail-to {
-    @include large-screen {
+    @include medium-screen {
       font-size: $font__size-body-large-screen;
+    }
+  }
+
+  $social-icons-size: 40px;
+
+  #follow-us-wrapper {
+    > div {
+      // I don't know why it gets higher than its contents without this line
+      height: $social-icons-size;
     }
   }
 
@@ -264,9 +284,9 @@ html.scrolled-down {
       background-position: half-pos($social-button-image-location-x, $social-button-image-location-y);
     }
 
-    width: 40px;
-    height: 40px;
-    display: block;
+    width: $social-icons-size;
+    height: $social-icons-size;
+    display: inline-block;
   }
 
   .rss-feed {
@@ -276,5 +296,7 @@ html.scrolled-down {
     @include hidpi {
       background-position: half-pos($social-button-image-location-x, $social-button-image-location-y);
     }
+
+    margin-right: $spacer-unit-size;
   }
 }

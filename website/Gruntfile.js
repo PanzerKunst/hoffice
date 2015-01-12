@@ -102,7 +102,7 @@ module.exports = function (grunt) {
 
         watch: {
             js: {
-                files: ['<%= concat.dist.src %>'],
+                files: ['<%= concat.js.src %>'],
                 tasks: ['buildjs']
             },
 

@@ -1,9 +1,24 @@
 # PHP installation
 
-1. Download the x86 distro of PHP for windows, from [windows.php.net](http://windows.php.net/download/)
+1. Download the x86 non-TS distro of PHP for windows, from [windows.php.net](http://windows.php.net/download/)
 2. Extract it to `c:\ProgramFiles\php-5.6.3`
 3. Download and install the [VC redist for x86 platform](http://www.microsoft.com/en-us/download/details.aspx?id=30679)
 4. Run `C:\ProgramFiles\php-5.6.3>php-cgi.exe -b 127.0.0.1:9000` and check that it works
+
+
+# XDebug installation
+
+1. Download the x86 non-TS version of XDebug, from [www.xdebug.org/download.php](http://www.xdebug.org/download.php)
+2. Extract the DLL to `c:\ProgramFiles\php-5.6.3\ext`
+
+3. Open `php.ini`, and add the following below the extensions section:
+
+        [XDebug]
+        zend_extension="php_xdebug-2.2.6-5.6-vc11-nts.dll"
+
+4. Restart PHP, open the test.php page in a browser and check that the XDebug extension is loaded.
+
+5. Integrate with IntelliJ IDEA by following [these steps](https://www.jetbrains.com/idea/help/topicId318.html#d117177e294)
 
 
 # Apache HTTPD installation
@@ -82,7 +97,7 @@
 2. In `Settings > Writing`, uncheck `Convert emoticons`, then save.
 
 
-# Enabling permalinks
+# Permalinks
 
 1. To avoid a global 403 Forbidden on the website when enabling permalinks, update the `Options` directive of `<Files ~ (\.php)>`, adding `FollowSymLinks`.
 2. Update section `DocumentRoot` with `AllowOverride FileInfo`.
@@ -91,7 +106,7 @@
 4. Test that permalinks work by clicking on a post title.
 
 
-# Enabling multisite
+# Multisite
 
 1. Follow the instructions at [codex.wordpress.org/Create-A-Network](http://codex.wordpress.org/Create_A_Network)
 2. Add a new site with same title and `/en` URL.
@@ -100,7 +115,7 @@
 5. Enable permalinks on the new site, and verify that they work
 
 
-# Add plugins
+# Plugins
 
 1. Hover `My Sites`, and click on `Network Admin > Plugins`, then `Add new`.
 
@@ -112,9 +127,42 @@
 3. Network-activate them 3, and take the opportunity to delete `Akismet` and `Hello Dolly`.
 
 
-# Add Hoffice theme
+# Hoffice theme
 
 1. Create a zip file containing the source code of the Hoffice theme. At the root of that zip file should be the `hoffice` folder (and inside it all the files).
 2. `Add New > Upload Theme` and upload the zip file.
 3. Network-enable the theme.
 4. Activate it in both sites.
+
+
+# Custom fields
+
+For each site, do the following:
+
+1. On the admin of the main site, add a new field group named "All", with location rules `Post Type is equal to post and Post Format is equal to Standard, or Post Type is equal to page`.
+
+2. Add the header image field, with the following properties:
+
+    * Field Label: `Header image`
+    * Field Name: `header_image`
+    * Field Type: `Image`
+    * Field Instructions: `Must be 4/3 format. Ideally no less than 1920px wide, and ideally no much more than that either.`
+    * Required: `Yes`
+
+3. Add the thumbnail field, with the following properties:
+
+    * Field Label: `Thumbnail`
+    * Field Name: `thumbnail`
+    * Field Type: `Image`
+    * Field Instructions: `Must be exactly 448 * 336px (that's a 4/3 format).`
+    * Required: `Yes`
+
+4. Publish.
+
+5. Update pages and posts
+
+
+# Primary menu
+
+1. Open `Appearance > Menus`, remove `Home` from the menu, and click on the `Create Menu` button.
+2. Once created, click on the `Manage Locations` tab and select it as the primary menu.

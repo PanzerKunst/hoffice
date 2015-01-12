@@ -964,12 +964,10 @@ html.scrolled-down .site-branding {
       padding-top: 59px; } }
   #header-menu > section {
     opacity: 0;
-    margin-top: 10vw; }
+    margin-bottom: 10vw; }
     @media screen and (min-width: 960px) {
       #header-menu > section {
-        margin-top: 98px; } }
-    #header-menu > section:first-child {
-      margin-top: 0; }
+        margin-bottom: 98px; } }
   #header-menu h2 {
     text-transform: uppercase;
     color: #666;
@@ -1048,28 +1046,38 @@ html.scrolled-down .site-branding {
         #header-menu a table, #header-menu a caption, #header-menu a tbody, #header-menu a tfoot, #header-menu a thead, #header-menu a tr, #header-menu a th, #header-menu a td {
           font-size: 40px; } }
 
-#header-menu-posts a,
-#header-menu-posts .posted-on {
-  display: block; }
+#header-menu-posts > h2 {
+  margin-bottom: 0; }
 #header-menu-posts a {
-  line-height: 1em;
-  margin-top: 0.75em; }
+  margin-top: 0.75em;
+  display: inline-block;
+  line-height: 1em; }
 #header-menu-posts .posted-on {
+  display: block;
   color: #cccccc; }
 
 #colophon {
   background-color: #252525;
   color: whitesmoke; }
+  #colophon > div {
+    text-align: center;
+    padding: 42px 0; }
   #colophon .menu-item {
+    display: inline-block;
     padding: 0 14px; }
-    @media screen and (min-width: 640px) {
-      #colophon .menu-item {
-        display: inline-block; } }
     #colophon .menu-item > a {
       color: #cccccc !important; }
-  @media screen and (min-width: 960px) {
+  #colophon article {
+    display: inline-block;
+    padding: 0 42px;
+    margin-top: 28px;
+    vertical-align: top; }
+  @media screen and (min-width: 640px) {
+    #colophon label,
     #colophon #mail-to {
       font-size: 20px; } }
+  #colophon #follow-us-wrapper > div {
+    height: 40px; }
   #colophon .facebook,
   #colophon .rss-feed {
     background-image: url("images/sprite.png");
@@ -1077,7 +1085,7 @@ html.scrolled-down .site-branding {
     background-position: -600px 0;
     width: 40px;
     height: 40px;
-    display: block; }
+    display: inline-block; }
     @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
       #colophon .facebook,
       #colophon .rss-feed {
@@ -1088,7 +1096,8 @@ html.scrolled-down .site-branding {
       #colophon .rss-feed {
         background-position: -300px 0; } }
   #colophon .rss-feed {
-    background-position: -700px 0; }
+    background-position: -700px 0;
+    margin-right: 14px; }
     @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
       #colophon .rss-feed {
         background-position: -350px 0; } }
