@@ -40,6 +40,7 @@
             <h2>Pages</h2>
             <?php wp_nav_menu(
                 array(
+                    'theme_location'  => 'primary',
                     'container' => null
                 )
             ); ?>

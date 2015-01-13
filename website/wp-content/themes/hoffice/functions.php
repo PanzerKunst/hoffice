@@ -310,3 +310,8 @@ function insertLocalisedCallToActionButton() {
 
     echo '<a href="' . $href . '" class="btn">' . $button_text . '</a>';
 }
+
+function insertLocalisedLabel($swedish, $english) {
+    $label = $_SERVER[REQUEST_URI] === "/en/" ? $english : $swedish;
+    echo "<label>" . $label . "<label>";
+}

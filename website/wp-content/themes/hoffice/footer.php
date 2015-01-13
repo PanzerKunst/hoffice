@@ -14,17 +14,18 @@
         <div>
             <?php wp_nav_menu(
                 array(
+                    'theme_location'  => 'primary',
                     'container' => null
                 )
             ); ?>
             <article>
-                <label>Contact us</label>
+                <?php insertLocalisedLabel("Kontakta oss", "Contact us"); ?>
                 <div>
                     <a id="mail-to" href="mailto:info@hoffice.nu"><span class="glyphicon glyphicon-envelope"></span>info@hoffice.nu</a>
                 </div>
             </article><!--
          --><article id="follow-us-wrapper">
-                <label>Follow us</label>
+                <?php insertLocalisedLabel("Följa oss", "Follow us"); ?>
                 <div>
                     <?php echo '<a class="rss-feed" href="' . get_site_url() . '/feed" target="_blank"></a>' ?>
                     <a class="facebook" href="https://www.facebook.com/hoffice.nu" target="_blank"></a>

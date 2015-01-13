@@ -27,6 +27,7 @@ get_header(); ?>
 
             <?php wp_nav_menu(
                 array(
+                    'theme_location'  => 'primary',
                     'walker' => new Walker_Index_Page_Menu(),
                     'menu_id' => 'index-menu-pages',
                     'link_before' => '<aside><h2>',
