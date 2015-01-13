@@ -43,6 +43,7 @@ module.exports = function (grunt) {
                     "wp-content/themes/hoffice/libs/p.js",
                     "wp-content/themes/hoffice/libs/jquery.visible.js", //The minified version has bug https://github.com/customd/jquery-visible/issues/21
                     "wp-content/themes/hoffice/libs/magnific-popup/jquery.magnific-popup.min.js",
+                    "wp-content/themes/hoffice/libs/js-breakpoints/breakpoints.js",
 
                     // Global
                     "wp-content/themes/hoffice/js/hoffice/global.js",

@@ -501,6 +501,12 @@ a img {
 /*--------------------------------------------------------------
 1.1 Libs
 --------------------------------------------------------------*/
+html:after {
+  content: "js-breakpoints-getComputedStyleTest";
+  visibility: hidden;
+  position: absolute;
+  clip: rect(0 0 0 0); }
+
 /*--------------------------------------------------------------
 1.2 Vendor overrides
 --------------------------------------------------------------*/
@@ -895,6 +901,8 @@ ul.menu {
       height: 59px; } }
   .site-branding.header-menu-open {
     background-color: #252525 !important; }
+    .site-branding.header-menu-open .lang-item > a {
+      color: #cccccc !important; }
     .site-branding.header-menu-open a {
       color: #cccccc !important; }
     .site-branding.header-menu-open button {
@@ -902,45 +910,76 @@ ul.menu {
       @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
         .site-branding.header-menu-open button {
           background-position: -150px 0 !important; } }
-  .site-branding > div:after {
-    content: "";
-    display: table;
-    clear: both; }
-  .site-branding > div > a {
-    float: left;
-    font-family: Aileron;
-    color: #cccccc;
-    text-decoration: none;
-    display: inline-block;
-    margin: 2px 0 0 14px;
-    font-size: 20px; }
-    @media screen and (min-width: 960px) {
-      .site-branding > div > a {
-        margin: 1px 0 0 25px; } }
-    @media screen and (min-width: 960px) {
-      .site-branding > div > a {
-        font-size: 30px; } }
-  .site-branding > div > button {
-    float: right;
-    margin: 0 9px 0 0;
-    background-image: url("images/sprite.png");
-    background-color: transparent;
-    background-position: -100px 0;
-    width: 40px;
-    height: 40px; }
-    @media screen and (min-width: 960px) {
-      .site-branding > div > button {
-        margin: 9px 20px 0 0; } }
-    @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
-      .site-branding > div > button {
-        background-image: url("images/sprite_2x.png");
-        background-size: 1000px 250px; } }
-    @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
-      .site-branding > div > button {
-        background-position: -50px 0; } }
+  .site-branding > div {
+    text-align: center; }
+    .site-branding > div:after {
+      content: "";
+      display: table;
+      clear: both; }
+    .site-branding > div > a {
+      float: left;
+      font-family: Aileron;
+      color: #cccccc;
+      text-decoration: none;
+      display: inline-block;
+      margin: 2px 0 0 14px;
+      font-size: 20px; }
+      @media screen and (min-width: 960px) {
+        .site-branding > div > a {
+          margin: 1px 0 0 25px; } }
+      @media screen and (min-width: 960px) {
+        .site-branding > div > a {
+          font-size: 30px; } }
+    .site-branding > div > #secondary {
+      display: inline-block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 7px; }
+      @media screen and (min-width: 960px) {
+        .site-branding > div > #secondary {
+          margin-top: 16px; } }
+      .site-branding > div > #secondary .widget_polylang {
+        margin: 0; }
+      .site-branding > div > #secondary ul {
+        list-style-type: none;
+        margin: 0; }
+      .site-branding > div > #secondary .lang-item {
+        display: inline-block; }
+      .site-branding > div > #secondary a,
+      .site-branding > div > #secondary a:visited,
+      .site-branding > div > #secondary a:hover,
+      .site-branding > div > #secondary a:focus,
+      .site-branding > div > #secondary a:active {
+        color: #cccccc; }
+      .site-branding > div > #secondary a {
+        margin: 0 7px; }
+    .site-branding > div > button {
+      float: right;
+      margin: 0 9px 0 0;
+      background-image: url("images/sprite.png");
+      background-color: transparent;
+      background-position: -100px 0;
+      width: 40px;
+      height: 40px; }
+      @media screen and (min-width: 960px) {
+        .site-branding > div > button {
+          margin: 9px 20px 0 0; } }
+      @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+        .site-branding > div > button {
+          background-image: url("images/sprite_2x.png");
+          background-size: 1000px 250px; } }
+      @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+        .site-branding > div > button {
+          background-position: -50px 0; } }
 
 html.scrolled-down .site-branding {
   background-color: rgba(245, 245, 245, 0.9); }
+  html.scrolled-down .site-branding #secondary a,
+  html.scrolled-down .site-branding #secondary a:visited,
+  html.scrolled-down .site-branding #secondary a:hover,
+  html.scrolled-down .site-branding #secondary a:focus,
+  html.scrolled-down .site-branding #secondary a:active {
+    color: #666; }
   html.scrolled-down .site-branding a {
     color: #666; }
   html.scrolled-down .site-branding button {
@@ -964,10 +1003,10 @@ html.scrolled-down .site-branding {
       padding-top: 59px; } }
   #header-menu > section {
     opacity: 0;
-    margin-bottom: 10vw; }
+    margin: 5vw 0; }
     @media screen and (min-width: 960px) {
       #header-menu > section {
-        margin-bottom: 98px; } }
+        margin: 49px 0; } }
   #header-menu h2 {
     text-transform: uppercase;
     color: #666;
@@ -1046,15 +1085,20 @@ html.scrolled-down .site-branding {
         #header-menu a table, #header-menu a caption, #header-menu a tbody, #header-menu a tfoot, #header-menu a thead, #header-menu a tr, #header-menu a th, #header-menu a td {
           font-size: 40px; } }
 
-#header-menu-posts > h2 {
-  margin-bottom: 0; }
-#header-menu-posts a {
-  margin-top: 0.75em;
-  display: inline-block;
-  line-height: 1em; }
-#header-menu-posts .posted-on {
-  display: block;
-  color: #cccccc; }
+#header-menu-posts {
+  margin-top: 10vw; }
+  @media screen and (min-width: 960px) {
+    #header-menu-posts {
+      margin-top: 98px; } }
+  #header-menu-posts > h2 {
+    margin-bottom: 0; }
+  #header-menu-posts a {
+    margin-top: 0.75em;
+    display: inline-block;
+    line-height: 1em; }
+  #header-menu-posts .posted-on {
+    display: block;
+    color: #cccccc; }
 
 #colophon {
   background-color: #252525;
@@ -1065,8 +1109,12 @@ html.scrolled-down .site-branding {
   #colophon .menu-item {
     display: inline-block;
     padding: 0 14px; }
-    #colophon .menu-item > a {
-      color: #cccccc !important; }
+    #colophon .menu-item > a,
+    #colophon .menu-item > a:visited,
+    #colophon .menu-item > a:hover,
+    #colophon .menu-item > a:focus,
+    #colophon .menu-item > a:active {
+      color: #cccccc; }
   #colophon article {
     display: inline-block;
     padding: 0 42px;
@@ -1517,6 +1565,22 @@ body.home .site-content {
     #show-more-posts {
       margin: 49px 0; } }
 
+@media screen and (min-width: 640px) {
+  html:after {
+    content: "GLOBAL_MEDIUM_SCREEN_BREAKPOINT";
+    visibility: hidden;
+    position: absolute;
+    clip: rect(0 0 0 0); }
+  html .js-breakpoints-GLOBAL_MEDIUM_SCREEN_BREAKPOINT {
+    position: absolute; } }
+@media screen and (min-width: 960px) {
+  html:after {
+    content: "GLOBAL_LARGE_SCREEN_BREAKPOINT";
+    visibility: hidden;
+    position: absolute;
+    clip: rect(0 0 0 0); }
+  html .js-breakpoints-GLOBAL_LARGE_SCREEN_BREAKPOINT {
+    position: absolute; } }
 html.header-menu-open {
   overflow: hidden; }
 

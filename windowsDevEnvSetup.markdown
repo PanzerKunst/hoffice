@@ -166,3 +166,8 @@ For each site, do the following:
 
 1. Open `Appearance > Menus`, remove `Home` from the menu, and click on the `Create Menu` button.
 2. Once created, click on the `Manage Locations` tab and select it as the primary menu.
+
+
+# Sidebar
+
+Remove everything except the Language bar

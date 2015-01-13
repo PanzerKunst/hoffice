@@ -28,6 +28,7 @@
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
                 <?php echo get_bloginfo( 'name' ); ?>
                 </a>
+                <?php get_sidebar(); ?>
                 <button class="styleless"></button>
             </div>
 		</div><!-- .site-branding -->

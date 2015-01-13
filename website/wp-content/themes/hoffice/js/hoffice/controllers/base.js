@@ -1,6 +1,8 @@
 CBR.Controllers.Base = P(function (c) {
     c.scrollTimer = null;
 
+    c.DIFFERENCE_BETWEEN_HOME_LINK_LEFT_MARGIN_AND_MENU_BUTTON_RIGHT_MARGIN = 5;
+
     c.HEADER_BAR_DARK_MODE = 0;
     c.HEADER_BAR_WHITE_MODE = 1;
     c.headerBarMode = c.HEADER_BAR_DARK_MODE;
@@ -30,19 +32,30 @@ CBR.Controllers.Base = P(function (c) {
     c.initElements = function () {
         this.$window = $(window);
         this.$html = $("html");
+
         this.$headerBar = $(".site-branding");
+        this.$homeLink = this.$headerBar.find('a[rel="home"]');
+        this.$menuButton = this.$headerBar.find(".styleless");
+        this.$polylangWidget = this.$headerBar.find(".widget_polylang");
+        this.$swedishLanguageLink = this.$polylangWidget.find('a[hreflang="sv"]');
+        this.$englishLanguageLink = this.$polylangWidget.find('a[hreflang="en"]');
+
         this.$headerMenu = $("#header-menu");
         this.$headerMenuSections = this.$headerMenu.children();
         this.$content = $("#content");
         this.$contentHeader = $("#content-header");
 
         this._addIOSClass();
+        this._initHeaderLanguageLinks();
         this._initContentHeaderHeight();
         $("#page").show();
     };
 
     c.initEvents = function () {
-        this.$window.resize(_.debounce($.proxy(this._initContentHeaderHeight, this), 15));
+        this.$window.resize(_.debounce(function(e) {
+            this._initHeaderLanguageLinks(e);
+            this._initContentHeaderHeight(e);
+        }.bind(this), 15));
 
         // Disabled on touch browsers - doesn't look good enough
         if (!Modernizr.touch) {
@@ -56,6 +69,25 @@ CBR.Controllers.Base = P(function (c) {
         if (CBR.Services.Browser.OS.isIOS()) {
             this.$html.addClass("ios");
         }
+    };
+
+    c._initHeaderLanguageLinks = function(e) {
+        // We need a very short timeout before centering the links, because for a split second this.$homeLink.width() is zero on load
+        setTimeout(function() {
+            this._centerLanguageLinks();
+
+            if (CBR.Services.Browser.Breakpoints.isSmallScreen()) {
+                this.$swedishLanguageLink.html("sv");
+                this.$englishLanguageLink.html("en");
+            } else {
+                this.$swedishLanguageLink.html("Svenska");
+                this.$englishLanguageLink.html("English");
+            }
+        }.bind(this), 50);
+    };
+
+    c._centerLanguageLinks = function() {
+        this.$polylangWidget.css("margin-left", this.$menuButton.width() - this.$homeLink.width() - this.DIFFERENCE_BETWEEN_HOME_LINK_LEFT_MARGIN_AND_MENU_BUTTON_RIGHT_MARGIN);
     };
 
     c._initContentHeaderHeight = function(e) {

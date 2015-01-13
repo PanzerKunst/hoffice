@@ -84,6 +84,12 @@ ul.menu {
   &.header-menu-open {
     background-color: $color__dark-background !important;
 
+    .lang-item {
+      > a {
+        color: $color__background-hr !important;
+      }
+    }
+
     a {
       color: $color__background-hr !important;
     }
@@ -102,6 +108,9 @@ ul.menu {
 
   > div {
     @include clearfix;
+
+    // To have language bar in the middle
+    text-align: center;
 
     > a {
       float: left;
@@ -126,6 +135,42 @@ ul.menu {
       @include large-screen {
         $home-menu-font-size: $font__size-h2;
         font-size: $home-menu-font-size;
+      }
+    }
+
+    > #secondary {
+      display: inline-block;
+      margin-left: auto;
+      margin-right: auto;
+
+      margin-top: 7px;
+      @include large-screen {
+        margin-top: 16px;
+      }
+
+      .widget_polylang {
+        margin: 0;
+      }
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+      }
+
+      .lang-item {
+        display: inline-block;
+      }
+
+      a,
+      a:visited,
+      a:hover,
+      a:focus,
+      a:active {
+        color: $color__background-hr;
+      }
+
+      a {
+        margin: 0 $spacer-unit-size/2;
       }
     }
 
@@ -156,6 +201,16 @@ ul.menu {
 html.scrolled-down {
   .site-branding {
     background-color: rgba(245, 245, 245, 0.9); // $color__background-body @0.9
+
+    #secondary {
+      a,
+      a:visited,
+      a:hover,
+      a:focus,
+      a:active {
+        color: $color__text-input;
+      }
+    }
 
     a {
       color: $color__text-input;
@@ -193,9 +248,9 @@ html.scrolled-down {
   > section {
     opacity: 0;
 
-    margin-bottom: $default-spacer-size;
+    margin: $default-spacer-size/2 0;
     @include large-screen {
-      margin-bottom: $default-spacer-size-large-screen;
+      margin: $default-spacer-size-large-screen/2 0;
     }
   }
 
@@ -212,6 +267,11 @@ html.scrolled-down {
 }
 
 #header-menu-posts {
+  margin-top: $default-spacer-size;
+  @include large-screen {
+    margin-top: $default-spacer-size-large-screen;
+  }
+
   > h2 {
     margin-bottom: 0;
   }
@@ -242,8 +302,12 @@ html.scrolled-down {
     display: inline-block;
     padding: 0 $spacer-unit-size;
 
-    > a {
-      color: $color__background-hr !important;
+    > a,
+    > a:visited,
+    > a:hover,
+    > a:focus,
+    > a:active {
+      color: $color__background-hr;
     }
   }
 
