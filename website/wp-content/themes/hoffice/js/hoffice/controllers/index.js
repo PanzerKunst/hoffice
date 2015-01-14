@@ -53,6 +53,11 @@ CBR.Controllers.Index = P(CBR.Controllers.Base, function (c, base) {
     };
 
     c._displayMenuItems = function () {
+        // Hide "Show remaining posts" button if there are no more posts to show
+        if (this.$oldPostsMenuItems.length === 0) {
+            this.$showMorePostsBtn.hide();
+        }
+
         this.$menuItemsExceptOldPosts.each(function (index, element) {
             var $menuItem = $(element);
             this._animateMenuItem($menuItem);

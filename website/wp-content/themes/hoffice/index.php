@@ -21,7 +21,7 @@ get_header(); ?>
                     <h1 class="entry-title"><?php bloginfo( 'description' ); ?></h1>
                     <div id="call-to-action">
                         <a class="btn" href="<?php insertLocalised("/hitta-eller-starta-en-hoffice-grupp", "/find-or-create-a-hoffice-group"); ?>">
-                            <?php insertLocalised("Hitta en Hoffice i närheten", "Find a Hoffice nearby"); ?>
+                            <?php insertLocalised("Hitta ett Hoffice i närheten", "Find a Hoffice nearby"); ?>
                         </a>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ get_header(); ?>
 
                  --></ul>
                     <div>
-                        <button id="show-more-posts">Show more blog posts</button>
+                        <button id="show-more-posts"><?php insertLocalised("Visa mera blogg inlägg", "Show more blog posts"); ?></button>
                     </div>
                 </div>
 
