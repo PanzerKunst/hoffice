@@ -41,16 +41,13 @@ ul.menu {
 .comment-navigation .nav-previous,
 .paging-navigation .nav-previous,
 .post-navigation .nav-previous {
-  float: left;
-  width: 50%;
+  display: none;
 }
 
 .comment-navigation .nav-next,
 .paging-navigation .nav-next,
 .post-navigation .nav-next {
-  float: right;
-  text-align: right;
-  width: 50%;
+  display: none;
 }
 
 #masthead {
@@ -143,7 +140,7 @@ ul.menu {
       margin-left: auto;
       margin-right: auto;
 
-      margin-top: 7px;
+      margin-top: 5px;
       @include large-screen {
         margin-top: 16px;
       }

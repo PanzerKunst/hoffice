@@ -26,7 +26,7 @@ body.single {
       left: 50%;
       @include transform(translateY(-100%) translateX(-50%));
 
-      display: inline-block;  // For the translateX to work
+      text-align: center;
 
       color: $color__background-body;
 
@@ -43,7 +43,8 @@ body.single {
   }
 
   .entry-content,
-  .entry-footer {
+  .entry-footer,
+  #disqus_thread {
     @include max-widthed-content;
   }
 }

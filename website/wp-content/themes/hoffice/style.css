@@ -865,15 +865,12 @@ ul.menu {
 .comment-navigation .nav-previous,
 .paging-navigation .nav-previous,
 .post-navigation .nav-previous {
-  float: left;
-  width: 50%; }
+  display: none; }
 
 .comment-navigation .nav-next,
 .paging-navigation .nav-next,
 .post-navigation .nav-next {
-  float: right;
-  text-align: right;
-  width: 50%; }
+  display: none; }
 
 #masthead {
   position: fixed;
@@ -934,7 +931,7 @@ ul.menu {
       display: inline-block;
       margin-left: auto;
       margin-right: auto;
-      margin-top: 7px; }
+      margin-top: 5px; }
       @media screen and (min-width: 960px) {
         .site-branding > div > #secondary {
           margin-top: 16px; } }
@@ -1268,7 +1265,7 @@ body.single #content-header > .entry-meta {
   -ms-transform: translateY(-100%) translateX(-50%);
   -o-transform: translateY(-100%) translateX(-50%);
   transform: translateY(-100%) translateX(-50%);
-  display: inline-block;
+  text-align: center;
   color: whitesmoke;
   font-size: 20px !important;
   text-shadow: 0 0 0.5em #252525; }
@@ -1282,8 +1279,10 @@ body.single #content-header > .entry-meta {
       font-size: 25px !important; } }
 body.page .entry-content,
 body.page .entry-footer,
+body.page #disqus_thread,
 body.single .entry-content,
-body.single .entry-footer {
+body.single .entry-footer,
+body.single #disqus_thread {
   max-width: 960px;
   padding-left: 14px;
   padding-right: 14px;

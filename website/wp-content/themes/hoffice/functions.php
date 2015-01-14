@@ -299,19 +299,6 @@ function insertPostMenuItem($post) {
     </li>';
 }
 
-function insertLocalisedCallToActionButton() {
-    $href = "/hitta-eller-starta-en-hoffice-grupp";
-    $button_text = "Hitta en Hoffice i närheten";
-
-    if ($_SERVER[REQUEST_URI] === "/en/") {
-        $href = "/find-or-create-a-hoffice-group";
-        $button_text = "Find a Hoffice nearby";
-    }
-
-    echo '<a href="' . $href . '" class="btn">' . $button_text . '</a>';
-}
-
-function insertLocalisedLabel($swedish, $english) {
-    $label = $_SERVER[REQUEST_URI] === "/en/" ? $english : $swedish;
-    echo "<label>" . $label . "<label>";
+function insertLocalised($swedish, $english) {
+    echo $_SERVER[REQUEST_URI] === "/en/" ? $english : $swedish;
 }

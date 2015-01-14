@@ -20,7 +20,9 @@ get_header(); ?>
                 <div>
                     <h1 class="entry-title"><?php bloginfo( 'description' ); ?></h1>
                     <div id="call-to-action">
-                        <?php insertLocalisedCallToActionButton(); ?>
+                        <a class="btn" href="<?php insertLocalised("/hitta-eller-starta-en-hoffice-grupp", "/find-or-create-a-hoffice-group"); ?>">
+                            <?php insertLocalised("Hitta en Hoffice i närheten", "Find a Hoffice nearby"); ?>
+                        </a>
                     </div>
                 </div>
             </div>

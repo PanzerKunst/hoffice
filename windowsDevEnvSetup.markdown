@@ -21,50 +21,38 @@
 5. Integrate with IntelliJ IDEA by following [these steps](https://www.jetbrains.com/idea/help/topicId318.html#d117177e294)
 
 
-# Apache HTTPD installation
+# Nginx installation
 
-1. Download the x86 version from [www.apachelounge.com/download](https://www.apachelounge.com/download) and extract to `c:\ProgramFiles\Apache24`
-2. Download the x86 modules files from that same page, and extract `mod_fcgid.so` to `c:\ProgramFiles\Apache24\modules`
-3. Open `conf/httpd.conf` and do the following changes:
-    1. Update the `ServerRoot` declaration to `ServerRoot "c:/ProgramFiles/Apache24"`
-    2. Add line `LoadModule fcgid_module modules/mod_fcgid.so` at the bottom of the `LoadModule` section
-    3. Below it, add the following section:
-    
-            <IfModule fcgid_module>
-            # Where is your php.ini file?
-            FcgidInitialEnv PHPRC        "c:/ProgramFiles/php-5.6.3"
-            <Files ~ (\.php)>
-                AddHandler fcgid-script .php  
-                FcgidWrapper "c:/ProgramFiles/php-5.6.3/php-cgi.exe" .php
-                Options  ExecCGI
-            </Files>
-            </IfModule>
+1. Download and extract to `c:\ProgramFiles\nginx-1.7.7`
 
-    4. Update the document root. To those 2 lines:
-    
-            DocumentRoot "c:/ProgramFiles/Apache24/htdocs"
-            <Directory "c:/ProgramFiles/Apache24/htdocs">
+2. Open `conf/nginx.conf` and do the following changes:
+    1. Uncomment lines in section `# pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000`
+    2. Update the `fastcgi_param` line with: `fastcgi_param  SCRIPT_FILENAME  c:/ProgramFiles/nginx-1.7.7/html/$fastcgi_script_name;`
+    3. Update the `location /` block nested in the uncommented `server {` line from `index  index.html index.htm;` to `index  index.php index.html index.htm;`
+
+3. Launch the Nginx server (C:\ProgramFiles\nginx-1.7.7> nginx) and check that there are no errors in `c:\ProgramFiles\nginx-1.7.7\logs\error.log`
         
         
-# Testing PHP in Apache
+# Testing PHP
 
-1. Create `c:\ProgramFiles\Apache24\htdocs\test.php` with content:
+1. Create `c:\ProgramFiles\nginx-1.7.7\html\test.php` with content:
 
         <?php
             phpinfo();
         ?>
 
-2. Restart Apache: `C:\ProgramFiles\Apache24\bin>httpd.exe`
-3. Access [http://localhost/test.php](http://localhost/test.php) and check that the page loads correctly
+3. Restart Nginx: `nginx -s reload`
+4. Access [http://localhost/test.php](http://localhost/test.php) and check that the page loads correctly
 
 
 # Wordpress installation
 
-1. Extract `wordpress-X.Y.Z.zip` to `c:\ProgramFiles\Apache24\htdocs`
-2. Point Apache to the IDEA project by updating the document root to:
-    
-        DocumentRoot "c:/Pro/hoffice/website"
-        <Directory "c:/Pro/hoffice/website">
+1. Extract `wordpress-X.Y.Z.zip` to `c:\ProgramFiles\nginx-1.7.7\html`
+
+2. To point to the IDEA project:
+    * Change the `root` directive inside the `location /` block to `root   c:/Pro/hoffice/website;`
+    * Change the `root` directive inside the `location ~ \.php$` block to `root           c:/Pro/hoffice/website;`
+    * Change the `fastcgi_param` directive inside the `location ~ \.php$` block to `SCRIPT_FILENAME  c:/Pro/hoffice/website/$fastcgi_script_name;`
     
 3. Activate the MySQL extension for PHP: copy `php.ini-development` to `php.ini` and uncomment the following 2 lines:
 
@@ -74,9 +62,10 @@
 
 4. Increase the max size for file uploads:
     * Edit `php.ini` and set `upload_max_filesize = 7M`
-    * In the Apache conf, add the following line in the `<IfModule fcgid_module>` section: `FcgidMaxRequestLen 7340032`.
+    * Edit `nginx.conf` and set add `client_max_body_size 8m;` (same as PHP's `post_max_size`) in the `http` section.
         
-5. Restart PHP: `php-cgi.exe -b 127.0.0.1:9000` and Apache.
+5. Restart PHP: `php-cgi.exe -b 127.0.0.1:9000` and Nginx: `nginx -s reload`
+
 6. Create DB on server and allow external access:
 
         $ mysql -u root -p
@@ -92,57 +81,64 @@
 # Wordpress settings
 
 1. Inside the Wordpress admin UI, click on `Settings > General` and update the following fields:
-    * "Tagline" to `Join our community of creators"
+    * "Tagline" to `Gå med i vår gemenskap av skaparna`
     * "Time Format" to "HH:mm"
+
 2. In `Settings > Writing`, uncheck `Convert emoticons`, then save.
 
 
 # Permalinks
 
-1. To avoid a global 403 Forbidden on the website when enabling permalinks, update the `Options` directive of `<Files ~ (\.php)>`, adding `FollowSymLinks`.
-2. Update section `DocumentRoot` with `AllowOverride FileInfo`.
-2. In `conf/httpd.conf`, uncomment `LoadModule rewrite_module modules/mod_rewrite.so`
-3. In the Wordpress admin interface, navigate to `Settings > Permalinks` and enable permalinks.
-4. Test that permalinks work by clicking on a post title.
-
-
-# Multisite
-
-1. Follow the instructions at [codex.wordpress.org/Create-A-Network](http://codex.wordpress.org/Create_A_Network)
-2. Add a new site with same title and `/en` URL.
-3. Check that accessing both `http://localhost/en` and `http://localhost/en/wp-admin` work
-4. Apply the same settings for this new site as in the `Wordpress settings` section above.
-5. Enable permalinks on the new site, and verify that they work
+1. In the Wordpress admin interface, navigate to `Settings > Permalinks` and enable permalinks (Custom Structure: `/blog/%postname%/`).
+2. Test that permalinks work by clicking on a post title.
 
 
 # Plugins
 
-1. Hover `My Sites`, and click on `Network Admin > Plugins`, then `Add new`.
-
-2. Search and install the following plugins:
+1. Search and install the following plugins:
     * Advanced Custom Fields
     * Disqus Comment System
     * JP Markdown
+    * Polylang
 
-3. Network-activate them 3, and take the opportunity to delete `Akismet` and `Hello Dolly`.
+2. Activate all 4, and take the opportunity to delete `Akismet` and `Hello Dolly`.
 
 
 # Hoffice theme
 
 1. Create a zip file containing the source code of the Hoffice theme. At the root of that zip file should be the `hoffice` folder (and inside it all the files).
 2. `Add New > Upload Theme` and upload the zip file.
-3. Network-enable the theme.
-4. Activate it in both sites.
+3. Activate it.
+
+
+# Polylang
+
+1. Go to `Settings > Languages` and add Swedish with order 1.
+2. Add English with order 2.
+3. Click on the "Strings translation" tab and update the English tagline to `Join our community of creators`
+4. Save changes.
+5. Click on the "Settings" tab, and check `There are posts, pages, categories or tags without language set. Do you want to set them all to default language ?`
+6. Save changes.
+
+
+# Primary menus
+
+1. Open `Appearance > Menus`, remove `Home` from the menu, rename it to "Menu SV" and click on the `Create Menu` button.
+2. Once created, click on the `Manage Locations` tab and select it as the primary menu for Swedish.
+3. Do similarly for the English menu, adding pages written in English.
+
+
+# Sidebar
+
+1. Open `Appearance > Widgets`.
+2. Add `Language Switcher`, remove everything else, and save.
 
 
 # Custom fields
 
-For each site, do the following:
-
 1. On the admin of the main site, add a new field group named "All", with location rules `Post Type is equal to post and Post Format is equal to Standard, or Post Type is equal to page`.
 
 2. Add the header image field, with the following properties:
-
     * Field Label: `Header image`
     * Field Name: `header_image`
     * Field Type: `Image`
@@ -150,7 +146,6 @@ For each site, do the following:
     * Required: `Yes`
 
 3. Add the thumbnail field, with the following properties:
-
     * Field Label: `Thumbnail`
     * Field Name: `thumbnail`
     * Field Type: `Image`
@@ -158,16 +153,9 @@ For each site, do the following:
     * Required: `Yes`
 
 4. Publish.
-
 5. Update pages and posts
 
 
-# Primary menu
+# Disqus
 
-1. Open `Appearance > Menus`, remove `Home` from the menu, and click on the `Create Menu` button.
-2. Once created, click on the `Manage Locations` tab and select it as the primary menu.
-
-
-# Sidebar
-
-Remove everything except the Language bar
+Go to `Comments > Disqus` and follow the instructions.

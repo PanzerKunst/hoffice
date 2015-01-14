@@ -19,13 +19,13 @@
                 )
             ); ?>
             <article>
-                <?php insertLocalisedLabel("Kontakta oss", "Contact us"); ?>
+                <label><?php insertLocalised("Kontakta oss", "Contact us"); ?></label>
                 <div>
                     <a id="mail-to" href="mailto:info@hoffice.nu"><span class="glyphicon glyphicon-envelope"></span>info@hoffice.nu</a>
                 </div>
             </article><!--
          --><article id="follow-us-wrapper">
-                <?php insertLocalisedLabel("Följa oss", "Follow us"); ?>
+                <label><?php insertLocalised("Följa oss", "Follow us"); ?></label>
                 <div>
                     <?php echo '<a class="rss-feed" href="' . get_site_url() . '/feed" target="_blank"></a>' ?>
                     <a class="facebook" href="https://www.facebook.com/hoffice.nu" target="_blank"></a>

@@ -37,7 +37,7 @@
     <nav id="header-menu">
         <!-- Pages -->
         <section id="header-menu-pages">
-            <h2>Pages</h2>
+            <h2><?php insertLocalised("Sidor", "Pages"); ?></h2>
             <?php wp_nav_menu(
                 array(
                     'theme_location'  => 'primary',
@@ -48,7 +48,7 @@
 
         <!-- Posts -->
         <section id="header-menu-posts">
-            <h2>Blog posts</h2>
+            <h2><?php insertLocalised("Blogg", "Blog"); ?></h2>
             <ul class="menu">
                 <?php foreach(get_posts() as $post) {
                     insertPostMenuItem($post);
