@@ -51,7 +51,9 @@
             <h2><?php insertLocalised("Blogg", "Blog"); ?></h2>
             <ul class="menu">
                 <?php foreach(get_posts() as $post) {
-                    insertPostMenuItem($post);
+                    if (get_post_format($post->ID) !== "video") {
+                        insertPostMenuItem($post);
+                    }
                 }
                 ?>
             </ul>

@@ -59,7 +59,7 @@ get_header(); ?>
 
                  --></ul>
                     <div>
-                        <button id="show-more-posts"><?php insertLocalised("Visa mera blogg inlägg", "Show more blog posts"); ?></button>
+                        <button id="show-more-posts"><?php insertLocalised("Visa fler blogginlägg", "Show more blog posts"); ?></button>
                     </div>
                 </div>
 
