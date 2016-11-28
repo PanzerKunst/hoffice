@@ -25,7 +25,7 @@
                 </div>
             </article><!--
          --><article id="follow-us-wrapper">
-                <label><?php insertLocalised("Följa oss", "Follow us"); ?></label>
+                <label><?php insertLocalised("Följ oss", "Follow us"); ?></label>
                 <div>
                     <a class="rss-feed" href="<?php bloginfo("rss2_url"); ?>"></a>
                     <a class="facebook" href="https://www.facebook.com/hoffice.nu" target="_blank"></a>

@@ -300,5 +300,5 @@ function insertPostMenuItem($post) {
 }
 
 function insertLocalised($swedish, $english) {
-    echo $_SERVER[REQUEST_URI] === "/en/" ? $english : $swedish;
+    echo substr($_SERVER[REQUEST_URI], 0, 4) === "/en/" ? $english : $swedish;
 }

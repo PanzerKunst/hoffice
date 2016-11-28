@@ -422,12 +422,21 @@ CBR.Services = CBR.Services || {};
         this._initHeaderLanguageLinks();
         this._initContentHeaderHeight();
         $("#page").show();
+
+        this.windowWidth = this.$window.width();
     };
 
     c.initEvents = function () {
         this.$window.resize(_.debounce(function(e) {
-            this._initHeaderLanguageLinks(e);
-            this._initContentHeaderHeight(e);
+            var windowWidth = this.$window.width();
+
+            // Because Android triggers window resize on scroll
+            if (this.windowWidth !== windowWidth) {
+                this._initHeaderLanguageLinks(e);
+                this._initContentHeaderHeight(e);
+
+                this.windowWidth = windowWidth;
+            }
         }.bind(this), 15));
 
         // Disabled on touch browsers - doesn't look good enough

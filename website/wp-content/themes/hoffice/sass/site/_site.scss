@@ -38,6 +38,11 @@ html {
   }
 }
 
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 #page {
   background-color: $color__background-body;
 
@@ -61,6 +66,24 @@ html {
     fieldset, form, label, legend,
     table, caption, tbody, tfoot, thead, tr, th, td {
       font-size: $font__size-body-large-screen;
+    }
+  }
+
+  > h2,
+  > h3 {
+    padding-top: $header-bar-height;
+
+    @include large-screen {
+      padding-top: $header-bar-height-large-screen;
+    }
+  }
+
+  ul,
+  ol {
+    margin-bottom: 1.5em;
+
+    > li {
+      margin-top: 1em;
     }
   }
 }

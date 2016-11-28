@@ -14,6 +14,8 @@
 <title><?php wp_title( '|', true, 'right' ); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+<link rel="alternate" href="http://hoffice.nu/sv" hreflang="se-sv" />
+<link rel="alternate" href="http://hoffice.nu/en" hreflang="en-us" />
 
 <?php wp_head(); ?>
 </head>

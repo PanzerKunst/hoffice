@@ -1,5 +1,3 @@
-$header-bar-height: 40px;
-$header-bar-height-large-screen: 59px;
 $menu-button-image-location-x-white: -100px;
 $menu-button-image-location-x-black: -200px;
 $cross-button-image-location-x-white: -300px;
@@ -13,6 +11,10 @@ $rss-feed-button-image-location-x: -700px;
 ul.menu {
   list-style-type: none;
   margin: 0;
+
+  h2 {
+    font-weight: normal;
+  }
 }
 
 /* Small menu */
@@ -114,6 +116,8 @@ ul.menu {
 
       font-family: $font__headings;
       color: $color__background-hr;
+      font-weight: bold;
+      letter-spacing: $letter-spacing-headdings;
 
       text-decoration: none;
 
@@ -254,6 +258,8 @@ html.scrolled-down {
   h2 {
     text-transform: uppercase;
     color: $color__text-input;
+    font-weight: normal;
+
     @include adaptive-font-size(4);
   }
 

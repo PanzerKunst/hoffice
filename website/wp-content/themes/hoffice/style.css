@@ -553,7 +553,11 @@ textarea {
   font-weight: bold; }
 h1, h2, h3, h4, h5, h6 {
   clear: both;
-  line-height: 1.25; }
+  line-height: 1.25;
+  font-family: Aileron;
+  font-weight: bold;
+  letter-spacing: -0.03em;
+  margin-bottom: 1em; }
 
 h1 {
   font-size: 27.5px;
@@ -563,9 +567,7 @@ h1 {
       font-size: 42px; } }
 
 h2 {
-  font-size: 25px;
-  font-family: Aileron;
-  margin-bottom: 0.5em; }
+  font-size: 25px; }
   @media screen and (min-width: 960px) {
     h2 {
       font-size: 30px; } }
@@ -589,7 +591,9 @@ dfn, cite, em, i {
   font-style: italic; }
 
 blockquote {
-  margin: 0 1.5em; }
+  border-left: 0.3em solid #ddd;
+  color: #777;
+  padding-left: 1em; }
 
 address {
   margin: 0 0 1.5em; }
@@ -844,6 +848,8 @@ a {
 ul.menu {
   list-style-type: none;
   margin: 0; }
+  ul.menu h2 {
+    font-weight: normal; }
 
 /* Small menu */
 .menu-toggle {
@@ -917,6 +923,8 @@ ul.menu {
       float: left;
       font-family: Aileron;
       color: #cccccc;
+      font-weight: bold;
+      letter-spacing: -0.03em;
       text-decoration: none;
       display: inline-block;
       margin: 2px 0 0 14px;
@@ -1007,6 +1015,7 @@ html.scrolled-down .site-branding {
   #header-menu h2 {
     text-transform: uppercase;
     color: #666;
+    font-weight: normal;
     font-size: 16px; }
     @media screen and (min-width: 640px) {
       #header-menu h2 {
@@ -1333,7 +1342,6 @@ body.single #disqus_thread {
     padding: 0 0.5em;
     font-family: Aileron;
     color: whitesmoke;
-    font-weight: bold;
     text-shadow: 0 0 0.5em #252525;
     font-size: 32px; }
     @media screen and (min-width: 640px) {
@@ -1415,7 +1423,7 @@ body.home .site-content {
     .index-menu-container > ul > li {
       visibility: hidden;
       display: inline-block;
-      vertical-align: bottom;
+      vertical-align: top;
       padding: 0 14px;
       margin-top: 5vw;
       max-width: 320px; }
@@ -1583,6 +1591,10 @@ body.home .site-content {
 html.header-menu-open {
   overflow: hidden; }
 
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
 #page {
   background-color: whitesmoke;
   display: none; }
@@ -1652,6 +1664,27 @@ html.header-menu-open {
       .entry-content th,
       .entry-content td {
         font-size: 20px; } }
+  .hoffice-page-content > h2,
+  .hoffice-page-content > h3,
+  .entry-content > h2,
+  .entry-content > h3 {
+    padding-top: 40px; }
+    @media screen and (min-width: 960px) {
+      .hoffice-page-content > h2,
+      .hoffice-page-content > h3,
+      .entry-content > h2,
+      .entry-content > h3 {
+        padding-top: 59px; } }
+  .hoffice-page-content ul,
+  .hoffice-page-content ol,
+  .entry-content ul,
+  .entry-content ol {
+    margin-bottom: 1.5em; }
+    .hoffice-page-content ul > li,
+    .hoffice-page-content ol > li,
+    .entry-content ul > li,
+    .entry-content ol > li {
+      margin-top: 1em; }
 
 .site-content {
   padding-bottom: 10vw; }

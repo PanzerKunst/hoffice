@@ -53,7 +53,7 @@ body.home {
       visibility: hidden;  // Will be shown in JavaScript
 
       display: inline-block;
-      vertical-align: bottom;
+      vertical-align: top;
 
       padding: 0 $spacer-unit-size; // We use padding instead of margin because we need to include it in the width: 33%
       margin-top: $default-spacer-size / 2;

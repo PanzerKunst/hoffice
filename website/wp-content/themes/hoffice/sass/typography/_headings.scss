@@ -1,6 +1,12 @@
 h1, h2, h3, h4, h5, h6 {
   clear: both;
   line-height: $font__line-height-headings;
+
+  font-family: $font__headings;
+  font-weight: bold;
+  letter-spacing: $letter-spacing-headdings;
+
+  margin-bottom: 1em;
 }
 
 h1 {
@@ -17,9 +23,6 @@ h2 {
   @include large-screen {
     font-size: $font__size-h2;
   }
-
-  font-family: $font__headings;
-  margin-bottom: 0.5em;
 }
 
 h3 {
